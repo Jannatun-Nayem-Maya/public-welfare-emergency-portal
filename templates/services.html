@@ -1,0 +1,57 @@
+{% extends "base.html" %}
+
+{% block content %}
+<div class="container my-4">
+    <h3 class="fw-bold mb-4 text-success">
+        <i class="fa-solid fa-cubes me-2"></i>
+        {% if lang == 'bn' %}ডিজিটাল নাগরিক সেবা ডিরেক্টরি{% else %}Digital Citizen Services Directory{% endif %}
+    </h3>
+
+    <div class="row g-4">
+        <div class="col-md-4">
+            <div class="card border-0 shadow-sm rounded-4 text-center p-3">
+                <i class="fa-solid fa-id-card display-4 text-success my-3"></i>
+                <h5 class="fw-bold">
+                    {% if lang == 'bn' %}এনআইডি ও স্মার্ট কার্ড{% else %}NID & Smart Card{% endif %}
+                </h5>
+                <p class="text-muted small">
+                    {% if lang == 'bn' %}অনলাইনে জাতীয় পরিচয়পত্র তথ্য সংশোধন ও নতুন আবেদন।{% else %}Online NID correction and new card application.{% endif %}
+                </p>
+                <a href="https://services.nidw.gov.bd" target="_blank" class="btn btn-outline-success btn-sm rounded-pill">
+                    {% if lang == 'bn' %}সেবা নিন{% else %}Open Service{% endif %}
+                </a>
+            </div>
+        </div>
+
+        <div class="col-md-4">
+            <div class="card border-0 shadow-sm rounded-4 text-center p-3">
+                <i class="fa-solid fa-passport display-4 text-primary my-3"></i>
+                <h5 class="fw-bold">
+                    {% if lang == 'bn' %}ই-পাসপোর্ট সেবা{% else %}E-Passport Portal{% endif %}
+                </h5>
+                <p class="text-muted small">
+                    {% if lang == 'bn' %}অনলাইনে ই-পাসপোর্ট আবেদন ও স্ট্যাটাস ট্র্যাকিং।{% else %}Online E-Passport application and status check.{% endif %}
+                </p>
+                <a href="https://www.epassport.gov.bd" target="_blank" class="btn btn-outline-primary btn-sm rounded-pill">
+                    {% if lang == 'bn' %}সেবা নিন{% else %}Open Service{% endif %}
+                </a>
+            </div>
+        </div>
+
+        <div class="col-md-4">
+            <div class="card border-0 shadow-sm rounded-4 text-center p-3">
+                <i class="fa-solid fa-certificate display-4 text-warning my-3"></i>
+                <h5 class="fw-bold">
+                    {% if lang == 'bn' %}জন্ম সনদ নিবন্ধণ{% else %}Birth Certificate{% endif %}
+                </h5>
+                <p class="text-muted small">
+                    {% if lang == 'bn' %}অনলাইন জন্ম ও মৃত্যু সনদ আবেদন এবং সত্যতা যাচাই।{% else %}Online birth certificate registration & verification.{% endif %}
+                </p>
+                <a href="https://bdris.gov.bd" target="_blank" class="btn btn-outline-warning btn-sm rounded-pill">
+                    {% if lang == 'bn' %}সেবা নিন{% else %}Open Service{% endif %}
+                </a>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}

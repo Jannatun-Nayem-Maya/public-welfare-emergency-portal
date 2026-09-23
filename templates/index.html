@@ -1,0 +1,153 @@
+{% extends "base.html" %}
+
+{% block content %}
+<div class="container my-3">
+
+    <!-- HERO CAROUSEL (5 SLIDES) -->
+    <div id="homeHeroCarousel" class="carousel slide shadow-sm rounded-4 overflow-hidden mb-5" data-bs-ride="carousel" data-bs-interval="3500">
+        
+        <!-- Indicators -->
+        <div class="carousel-indicators">
+            <button type="button" data-bs-target="#homeHeroCarousel" data-bs-slide-to="0" class="active"></button>
+            <button type="button" data-bs-target="#homeHeroCarousel" data-bs-slide-to="1"></button>
+            <button type="button" data-bs-target="#homeHeroCarousel" data-bs-slide-to="2"></button>
+            <button type="button" data-bs-target="#homeHeroCarousel" data-bs-slide-to="3"></button>
+            <button type="button" data-bs-target="#homeHeroCarousel" data-bs-slide-to="4"></button>
+        </div>
+
+        <!-- Carousel Items -->
+        <div class="carousel-inner">
+            
+            <!-- Slide 1: Education -->
+            <div class="carousel-item active">
+                <img src="{{ url_for('static', filename='images/slide1.jpg') }}" class="d-block w-100 object-fit-cover" style="height: 380px;" alt="Scholarship">
+                <div class="carousel-caption d-none d-md-block bg-dark bg-opacity-60 rounded-3 p-3">
+                    <h3 class="fw-bold">
+                        {% if lang == 'bn' %}শিক্ষা ও স্কলারশিপ তথ্য{% else %}Education & Scholarship Info{% endif %}
+                    </h3>
+                    <p class="mb-0">
+                        {% if lang == 'bn' %}সহজেই বিভিন্ন সরকারি ও বেসরকারি বৃত্তির তথ্য ও নির্দেশিকা পাবেন।{% else %}Find scholarship guidance and application support easily.{% endif %}
+                    </p>
+                </div>
+            </div>
+
+            <!-- Slide 2: Blood Donation -->
+            <div class="carousel-item">
+                <img src="{{ url_for('static', filename='images/slide2.jpg') }}" class="d-block w-100 object-fit-cover" style="height: 380px;" alt="Blood Service">
+                <div class="carousel-caption d-none d-md-block bg-dark bg-opacity-60 rounded-3 p-3">
+                    <h3 class="fw-bold">
+                        {% if lang == 'bn' %}জরুরি রক্তদান সেবা{% else %}Emergency Blood Service{% endif %}
+                    </h3>
+                    <p class="mb-0">
+                        {% if lang == 'bn' %}জরুরি প্রয়োজনে রক্তদাতা খুঁজুন অথবা রক্তের রিকোয়েস্ট পোস্ট করুন।{% else %}Post emergency blood requests and connect with donors quickly.{% endif %}
+                    </p>
+                </div>
+            </div>
+
+            <!-- Slide 3: Digital Governance -->
+            <div class="carousel-item">
+                <img src="{{ url_for('static', filename='images/slide3.jpg') }}" class="d-block w-100 object-fit-cover" style="height: 380px;" alt="Cyber Security">
+                <div class="carousel-caption d-none d-md-block bg-dark bg-opacity-60 rounded-3 p-3">
+                    <h3 class="fw-bold">
+                        {% if lang == 'bn' %}স্মার্ট নাগরিক সেবা ও ডিজিটাল নিরাপত্তা{% else %}Smart Governance & Security{% endif %}
+                    </h3>
+                    <p class="mb-0">
+                        {% if lang == 'bn' %}নাগরিকদের তথ্য সুরক্ষায় নিরাপদ ও আধুনিক প্রযুক্তি ব্যবস্থা।{% else %}Securing citizen data with modern digital infrastructure.{% endif %}
+                    </p>
+                </div>
+            </div>
+
+            <!-- Slide 4: Legal & Rights -->
+            <div class="carousel-item">
+                <img src="{{ url_for('static', filename='images/slide4.jpg') }}" class="d-block w-100 object-fit-cover" style="height: 380px;" alt="Justice">
+                <div class="carousel-caption d-none d-md-block bg-dark bg-opacity-60 rounded-3 p-3">
+                    <h3 class="fw-bold">
+                        {% if lang == 'bn' %}আইনি সহায়তা ও অধিকার সংক্রান্ত তথ্য{% else %}E-Justice & Legal Guidelines{% endif %}
+                    </h3>
+                    <p class="mb-0">
+                        {% if lang == 'bn' %}নাগরিক আইনি সহায়তা ও অধিকার সম্পর্কিত অনলাইন তথ্যবাণী।{% else %}Easy access to legal guidelines and citizen rights support.{% endif %}
+                    </p>
+                </div>
+            </div>
+
+            <!-- Slide 5: Government Portal -->
+            <div class="carousel-item">
+                <img src="{{ url_for('static', filename='images/slide5.jpg') }}" class="d-block w-100 object-fit-cover" style="height: 380px;" alt="Government">
+                <div class="carousel-caption d-none d-md-block bg-dark bg-opacity-60 rounded-3 p-3">
+                    <h3 class="fw-bold">
+                        {% if lang == 'bn' %}জনসেবা — এক ঠিকানায় ডিজিটাল সেবা{% else %}Jonoseba — Digital Citizen Portal{% endif %}
+                    </h3>
+                    <p class="mb-0">
+                        {% if lang == 'bn' %}একই জায়গায় সকল প্রয়োজনীয় সরকারি ও নাগরিক সেবা সুবিধা।{% else %}Access all essential public services easily in one platform.{% endif %}
+                    </p>
+                </div>
+            </div>
+
+        </div>
+
+        <!-- Controls -->
+        <button class="carousel-control-prev" type="button" data-bs-target="#homeHeroCarousel" data-bs-slide="prev">
+            <span class="carousel-control-prev-icon"></span>
+        </button>
+        <button class="carousel-control-next" type="button" data-bs-target="#homeHeroCarousel" data-bs-slide="next">
+            <span class="carousel-control-next-icon"></span>
+        </button>
+
+    </div>
+
+    <!-- Quick Features Section -->
+    <div class="row g-4 text-center">
+        <div class="col-md-4">
+            <div class="card h-100 border-0 shadow-sm rounded-4 p-3">
+                <div class="card-body">
+                    <i class="fa-solid fa-hand-holding-droplet text-danger display-4 mb-3"></i>
+                    <h5 class="card-title fw-bold">
+                        {% if lang == 'bn' %}রক্তদান কেন্দ্র{% else %}Blood Hub{% endif %}
+                    </h5>
+                    <p class="text-muted">
+                        {% if lang == 'bn' %}জরুরি রক্তের জন্য সরাসরি পোস্ট দিন অথবা রক্তদাতার তথ্য খুঁজুন।{% else %}Submit urgent blood requests or contact available donors.{% endif %}
+                    </p>
+                    <a href="{{ url_for('health') }}" class="btn btn-outline-danger btn-sm rounded-pill px-4">
+                        {% if lang == 'bn' %}প্রবেশ করুন{% else %}Enter Hub{% endif %}
+                    </a>
+                </div>
+            </div>
+        </div>
+
+        <div class="col-md-4">
+            <div class="card h-100 border-0 shadow-sm rounded-4 p-3">
+                <div class="card-body">
+                    <i class="fa-solid fa-graduation-cap text-primary display-4 mb-3"></i>
+                    <h5 class="card-title fw-bold">
+                        {% if lang == 'bn' %}বৃত্তি ডিরেক্টরি{% else %}Scholarships{% endif %}
+                    </h5>
+                    <p class="text-muted">
+                        {% if lang == 'bn' %}দেশী-বিদেশী সরকারি ও বেসরকারি বৃত্তির সর্বশেষ আপডেট।{% else %}Explore academic scholarships and eligibility details.{% endif %}
+                    </p>
+                    <a href="{{ url_for('scholarship') }}" class="btn btn-outline-primary btn-sm rounded-pill px-4">
+                        {% if lang == 'bn' %}বিস্তারিত দেখুন{% else %}View Details{% endif %}
+                    </a>
+                </div>
+            </div>
+        </div>
+
+        <div class="col-md-4">
+            <div class="card h-100 border-0 shadow-sm rounded-4 p-3">
+                <div class="card-body">
+                    <i class="fa-solid fa-building-columns text-success display-4 mb-3"></i>
+                    <h5 class="card-title fw-bold">
+                        {% if lang == 'bn' %}ই-গভর্নেন্স সেবা{% else %}Citizen Services{% endif %}
+                    </h5>
+                    <p class="text-muted">
+                        {% if lang == 'bn' %}স্মার্ট নাগরিক সুবিধা, জাতীয় পরিচয়পত্র ও অনলাইন সরকারি সেবা।{% else %}E-governance tools, national services, and guidelines.{% endif %}
+                    </p>
+                    <a href="{{ url_for('services') }}" class="btn btn-outline-success btn-sm rounded-pill px-4">
+                        {% if lang == 'bn' %}সেবা দেখুন{% else %}Explore Services{% endif %}
+                    </a>
+                </div>
+            </div>
+        </div>
+    </div>
+
+</div>
+{% endblock %}

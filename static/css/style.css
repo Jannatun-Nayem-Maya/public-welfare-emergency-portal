@@ -1,0 +1,192 @@
+/* ==========================================
+   JONOSEBA PORTAL - MODERN THEME CSS
+   Colors: Deep Teal Green & Warm Terracotta
+   ========================================== */
+
+:root {
+    --primary-color: #0d4738;       /* Deep Forest Teal Green */
+    --primary-hover: #083126;       /* Darker Teal */
+    --accent-color: #d95d39;        /* Warm Terracotta / Orange */
+    --accent-hover: #bc4c2b;        /* Darker Accent */
+    --bg-light: #f7f9f8;            /* Soft Cream Warm White */
+    --card-bg: #ffffff;             /* Pure White for Cards */
+    --text-dark: #1e2923;           /* Charcoal Greenish Text */
+    --text-muted: #5f6e66;          /* Muted Grey Green */
+    --border-color: #e2e8e4;        /* Subtle Border */
+    --shadow-sm: 0 4px 12px rgba(13, 71, 56, 0.05);
+    --shadow-md: 0 8px 24px rgba(13, 71, 56, 0.08);
+}
+
+/* Global Styles */
+body {
+    font-family: 'Hind Siliguri', 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    background-color: var(--bg-light);
+    color: var(--text-dark);
+    margin: 0;
+    padding: 0;
+}
+
+/* Navbar Customization */
+.navbar {
+    background-color: var(--primary-color) !important;
+    padding: 12px 0;
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+}
+
+.navbar-brand {
+    font-weight: 700;
+    font-size: 1.4rem;
+    color: #ffffff !important;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+}
+
+.nav-link {
+    color: rgba(255, 255, 255, 0.9) !important;
+    font-weight: 500;
+    transition: all 0.3s ease;
+    margin: 0 4px;
+}
+
+.nav-link:hover {
+    color: #ffffff !important;
+    transform: translateY(-1px);
+}
+
+/* Buttons Styling */
+.btn-outline-light {
+    border-color: rgba(255, 255, 255, 0.4);
+    color: #ffffff;
+    border-radius: 20px;
+    padding: 6px 18px;
+}
+
+.btn-outline-light:hover {
+    background-color: rgba(255, 255, 255, 0.15);
+    border-color: #ffffff;
+}
+
+.btn-accent {
+    background-color: var(--accent-color);
+    color: #ffffff;
+    border: none;
+    font-weight: 600;
+    border-radius: 20px;
+    padding: 8px 20px;
+    transition: all 0.3s ease;
+}
+
+.btn-accent:hover {
+    background-color: var(--accent-hover);
+    color: #ffffff;
+    box-shadow: 0 4px 12px rgba(217, 93, 57, 0.3);
+}
+
+/* Hero Carousel Area */
+.carousel-item img {
+    height: 380px;
+    object-fit: cover;
+    border-radius: 16px;
+}
+
+.carousel {
+    border-radius: 16px;
+    overflow: hidden;
+    box-shadow: var(--shadow-md);
+    margin-top: 20px;
+}
+
+.carousel-caption {
+    background: rgba(13, 71, 56, 0.82);
+    backdrop-filter: blur(8px);
+    border-radius: 12px;
+    padding: 20px 30px;
+    border: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.carousel-caption h5 {
+    font-weight: 700;
+    font-size: 1.5rem;
+    color: #ffffff;
+}
+
+.carousel-caption p {
+    color: #e0e8e4;
+    margin-bottom: 0;
+}
+
+/* Service Category Cards */
+.card {
+    border: 1px solid var(--border-color);
+    border-radius: 16px;
+    background-color: var(--card-bg);
+    box-shadow: var(--shadow-sm);
+    transition: all 0.3s ease;
+}
+
+.card:hover {
+    transform: translateY(-5px);
+    box-shadow: var(--shadow-md);
+    border-color: rgba(13, 71, 56, 0.2);
+}
+
+.service-icon-box {
+    width: 60px;
+    height: 60px;
+    border-radius: 50%;
+    background-color: rgba(13, 71, 56, 0.08);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin: 0 auto 16px auto;
+    color: var(--primary-color);
+    font-size: 1.6rem;
+}
+
+/* Custom Table Styling */
+.table {
+    background: var(--card-bg);
+    border-radius: 12px;
+    overflow: hidden;
+    box-shadow: var(--shadow-sm);
+}
+
+.table thead {
+    background-color: var(--primary-color);
+    color: #ffffff;
+}
+
+.table th {
+    font-weight: 600;
+    padding: 14px;
+}
+
+.table td {
+    padding: 14px;
+    vertical-align: middle;
+}
+
+/* Footer Styling */
+footer {
+    background-color: var(--primary-color);
+    color: #e0e8e4;
+    padding: 30px 0;
+    margin-top: 60px;
+}
+
+footer a {
+    color: var(--accent-color);
+    text-decoration: none;
+}
+
+footer a:hover {
+    text-style: underline;
+}
+/* Enable text selection everywhere for all devices */
+body, p, h1, h2, h3, h4, h5, h6, span, a {
+    user-select: text !important;
+    -webkit-user-select: text !important;
+    -moz-user-select: text !important;
+    -ms-user-select: text !important;
+}

@@ -1,0 +1,114 @@
+{% extends 'base.html' if body_only is not defined else 'index.html' %}
+
+{% block content %}
+<div class="container my-4">
+    <div class="row">
+        <!-- Bam pashe: Roktodaner Request Form -->
+        <div class="col-md-5 mb-4">
+            <div class="card p-4 shadow-sm border-0">
+                <h3 class="fw-bold mb-3" style="color: var(--primary-color);">
+                    <i class="bi bi-droplet-fill text-danger me-2"></i>
+                    {% if lang == 'bn' %}জরুরি রক্তের অনুরোধ জানান{% else %}Post Blood Request{% endif %}
+                </h3>
+                <form action="{{ url_for('health') }}" method="POST">
+                    <div class="mb-3">
+                        <label class="form-label">{% if lang == 'bn' %}রোগীর নাম{% else %}Patient Name{% endif %}</label>
+                        <input type="text" name="patient_name" class="form-control" required>
+                    </div>
+                    <div class="mb-3">
+                        <label class="form-label">{% if lang == 'bn' %}রক্তের গ্রুপ{% else %}Blood Group{% endif %}</label>
+                        <select name="blood_group" class="form-select" required>
+                            <option value="">{% if lang == 'bn' %}নির্বাচন করুন{% else %}Select{% endif %}</option>
+                            <option value="A+">A+</option>
+                            <option value="A-">A-</option>
+                            <option value="B+">B+</option>
+                            <option value="B-">B-</option>
+                            <option value="AB+">AB+</option>
+                            <option value="AB-">AB-</option>
+                            <option value="O+">O+</option>
+                            <option value="O-">O-</option>
+                        </select>
+                    </div>
+                    <div class="mb-3">
+                        <label class="form-label">{% if lang == 'bn' %}হাসপাতাল / ঠিকানা{% else %}Hospital / Address{% endif %}</label>
+                        <input type="text" name="hospital" class="form-control" required>
+                    </div>
+                    <div class="mb-3">
+                        <label class="form-label">{% if lang == 'bn' %}যোগাযোগের নম্বর{% else %}Contact Number{% endif %}</label>
+                        <input type="text" name="contact_number" class="form-control" required>
+                    </div>
+                    <div class="mb-3">
+                        <label class="form-label">{% if lang == 'bn' %}জেলা / এলাকা{% else %}Location{% endif %}</label>
+                        <input type="text" name="location" class="form-control" required>
+                    </div>
+                    <div class="mb-3">
+                        <label class="form-label">{% if lang == 'bn' %}জরুরি অবস্থা{% else %}Urgency Level{% endif %}</label>
+                        <select name="urgency" class="form-select">
+                            <option value="Emergency">{% if lang == 'bn' %}জরুরি (Emergency){% else %}Emergency{% endif %}</option>
+                            <option value="Within 24 Hours">{% if lang == 'bn' %}২৪ ঘণ্টার মধ্যে{% else %}Within 24 Hours{% endif %}</option>
+                            <option value="Regular">{% if lang == 'bn' %}সাধারণ{% else %}Regular{% endif %}</option>
+                        </select>
+                    </div>
+                    <div class="mb-3">
+                        <label class="form-label">{% if lang == 'bn' %}বিস্তারিত (ঐচ্ছিক){% else %}Details (Optional){% endif %}</label>
+                        <textarea name="details" class="form-control" rows="3"></textarea>
+                    </div>
+                    <button type="submit" class="btn btn-accent w-100">
+                        {% if lang == 'bn' %}অনুরোধ পোস্ট করুন{% else %}Submit Request{% endif %}
+                    </button>
+                </form>
+            </div>
+        </div>
+
+        <!-- Dan pashe: YouTube Video & Request List -->
+        <div class="col-md-7">
+            <!-- Autoplay YouTube Video Section -->
+            <div class="card p-3 shadow-sm border-0 mb-4">
+                <h5 class="fw-bold mb-3" style="color: var(--primary-color);">
+                    <i class="bi bi-youtube text-danger me-2"></i>
+                    {% if lang == 'bn' %}রক্তদান নিয়ে সচেতনতা{% else %}Awareness on Blood Donation{% endif %}
+                </h5>
+                <div class="ratio ratio-16x9 rounded-3 overflow-hidden">
+                    <iframe 
+                        src="https://www.youtube.com/embed/T4hUVf3Ux6I?autoplay=1&mute=1&enablejsapi=1" 
+                        title="BBC Bangla Blood Donation Myths" 
+                        allow="autoplay; encrypted-media"
+                        allowfullscreen>
+                    </iframe>
+                </div>
+            </div>
+
+            <!-- Samprotik Rokter Onurodh Somuho -->
+            <h3 class="fw-bold mb-3" style="color: var(--primary-color);">
+                <i class="bi bi-list-stars me-2"></i>
+                {% if lang == 'bn' %}সাম্প্রতিক রক্তের অনুরোধসমূহ{% else %}Recent Blood Requests{% endif %}
+            </h3>
+            
+            {% if requests %}
+                {% for req in requests %}
+                <div class="card mb-3 p-3 shadow-sm border-0">
+                    <div class="d-flex justify-content-between align-items-center">
+                        <div>
+                            <span class="badge bg-danger fs-6 mb-2">{{ req.blood_group }}</span>
+                            <h5 class="fw-bold mb-1">{{ req.patient_name }}</h5>
+                            <p class="text-muted mb-1"><i class="bi bi-geo-alt-fill text-danger me-1"></i>{{ req.hospital }}, {{ req.location }}</p>
+                            <p class="mb-1"><strong><i class="bi bi-telephone-fill me-1"></i>{% if lang == 'bn' %}ফোন:{% else %}Phone:{% endif %}</strong> {{ req.contact_number }}</p>
+                            {% if req.details %}
+                                <small class="text-secondary">{{ req.details }}</small>
+                            {% endif %}
+                        </div>
+                        <div>
+                            <span class="badge bg-warning text-dark">{{ req.urgency }}</span>
+                        </div>
+                    </div>
+                </div>
+                {% endfor %}
+            {% else %}
+                <div class="alert alert-info">
+                    {% if lang == 'bn' %}বর্তমানে কোনো রক্তদানের অনুরোধ নেই।{% else %}No blood requests available at the moment.{% endif %}
+                </div>
+            {% endif %}
+        </div>
+    </div>
+</div>
+{% endblock %}

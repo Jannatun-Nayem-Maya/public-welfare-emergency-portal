@@ -1,0 +1,392 @@
+{% extends 'base.html' %}
+
+{% block content %}
+<!-- Custom Style for Yellow & Green Theme Vibes -->
+<style>
+    .bg-green-gradient {
+        background: linear-gradient(135deg, #198754 0%, #0f5132 100%);
+    }
+    .text-yellow-custom {
+        color: #ffc107 !important;
+    }
+    .badge-yellow {
+        background-color: #ffc107;
+        color: #000;
+        font-weight: 600;
+    }
+    .hover-shadow:hover {
+        transform: translateY(-5px);
+        transition: all 0.3s ease;
+        box-shadow: 0 .5rem 1rem rgba(25, 135, 84, 0.15) !important;
+    }
+    .card {
+        border-top: 4px solid #198754 !important;
+    }
+</style>
+
+<div class="container py-4">
+    
+    <!-- Hero / Title Header Section -->
+    <div class="p-4 mb-4 bg-green-gradient text-white rounded-3 shadow-sm border-bottom border-warning border-4">
+        <div class="row align-items-center">
+            <div class="col-md-8">
+                <h1 class="fw-bold fs-2">
+                    <i class="fa-solid fa-graduation-cap text-yellow-custom me-2"></i>
+                    {% if lang == 'bn' %}শিক্ষা ও বৃত্তি পোর্টাল{% else %}Education & Scholarship Portal{% endif %}
+                </h1>
+                <p class="mb-0 fs-6 opacity-75">
+                    {% if lang == 'bn' %}সরকারি, বেসরকারি এবং আন্তর্জাতিক বৃত্তির সর্বশেষ তথ্য ও আবেদনের নির্দেশিকা।{% else %}Find government, private, and international scholarship opportunities.{% endif %}
+                </p>
+            </div>
+            <div class="col-md-4 text-md-end mt-3 mt-md-0">
+                <span class="badge badge-yellow fs-6 p-2 shadow-sm">
+                    <i class="fa-solid fa-award me-1"></i>
+                    {% if lang == 'bn' %}মোট বৃত্তি: ১০+ সক্রিয়{% else %}Active Scholarships: 10+{% endif %}
+                </span>
+            </div>
+        </div>
+    </div>
+
+    <!-- Search & Category Filter Section -->
+    <div class="card border-0 shadow-sm mb-4 bg-light">
+        <div class="card-body p-3">
+            <div class="row g-2 align-items-center">
+                <div class="col-md-5">
+                    <div class="input-group">
+                        <span class="input-group-text bg-white border-end-0 text-success"><i class="fa-solid fa-magnifying-glass"></i></span>
+                        <input type="text" id="searchInput" class="form-control border-start-0" placeholder="{% if lang == 'bn' %}বৃত্তির নাম দিয়ে খুঁজুন...{% else %}Search scholarship by keyword...{% endif %}">
+                    </div>
+                </div>
+                <div class="col-md-4">
+                    <select id="categoryFilter" class="form-select border-success">
+                        <option value="all" selected>{% if lang == 'bn' %}সকল ক্যাটাগরি (All Categories){% else %}All Categories{% endif %}</option>
+                        <option value="govt">{% if lang == 'bn' %}সরকারি বৃত্তি (Govt){% else %}Govt. Scholarship{% endif %}</option>
+                        <option value="international">{% if lang == 'bn' %}আন্তর্জাতিক বৃত্তি (International){% else %}International{% endif %}</option>
+                        <option value="university">{% if lang == 'bn' %}বিশ্ববিদ্যালয় বৃত্তি (University Merit){% else %}University Merit{% endif %}</option>
+                    </select>
+                </div>
+                <div class="col-md-3">
+                    <button type="button" id="filterBtn" class="btn btn-success w-100 fw-bold shadow-sm">
+                        <i class="fa-solid fa-filter me-1"></i>
+                        {% if lang == 'bn' %}ফিল্টার করুন{% else %}Filter Results{% endif %}
+                    </button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Scholarship Cards Grid -->
+    <h3 class="fw-bold mb-3 text-success fs-4 border-bottom pb-2">
+        <i class="fa-solid fa-list-check me-2"></i>
+        {% if lang == 'bn' %}উপলব্ধ বৃত্তিসমূহ (আলাদা আলাদা কার্ড){% else %}Available Scholarships (Dedicated Cards){% endif %}
+    </h3>
+
+    <div class="row g-4" id="scholarshipContainer">
+        
+        <!-- 1. Govt: PM Trust Fund -->
+        <div class="col-md-6 col-lg-4 scholarship-card" data-category="govt">
+            <div class="card h-100 shadow-sm hover-shadow">
+                <div class="card-header bg-white border-0 pt-3 pb-0 d-flex justify-content-between align-items-center">
+                    <span class="badge bg-success">{% if lang == 'bn' %}সরকারি (বাংলাদেশ){% else %}Govt (BD){% endif %}</span>
+                    <span class="badge badge-yellow"><i class="fa-regular fa-clock me-1"></i>15 May, 2026</span>
+                </div>
+                <div class="card-body">
+                    <h5 class="card-title fw-bold text-success mb-2">
+                        {% if lang == 'bn' %}প্রধানমন্ত্রীর শিক্ষা ট্রাস্ট ফান্ড{% else %}Prime Minister's Education Trust Fund{% endif %}
+                    </h5>
+                    <p class="card-text text-muted small mb-3">
+                        {% if lang == 'bn' %}বাংলাদেশের মাধ্যমিক ও স্নাতক পর্যায়ের মেধাবী শিক্ষার্থীদের জন্য আর্থিক সহায়তা।{% else %}Financial support for meritorious students under secondary & undergraduate programs in Bangladesh.{% endif %}
+                    </p>
+                    <ul class="list-unstyled small text-secondary mb-3">
+                        <li><i class="fa-solid fa-check text-success me-2"></i>{% if lang == 'bn' %}ন্যূনতম জিপিএ ৪.০০{% else %}GPA 4.00+ Required{% endif %}</li>
+                        <li><i class="fa-solid fa-coins text-warning me-2"></i>৳১০,০০০ / {% if lang == 'bn' %}বছর{% else %}Year{% endif %}</li>
+                    </ul>
+                </div>
+                <div class="card-footer bg-white border-0 pb-3">
+                    <a href="https://www.pmeat.gov.bd" target="_blank" class="btn btn-outline-success btn-sm w-100 fw-bold">
+                        {% if lang == 'bn' %}বিস্তারিত ও আবেদন{% else %}Details & Apply{% endif %}
+                    </a>
+                </div>
+            </div>
+        </div>
+
+        <!-- 2. International: Turkey (Burslari) -->
+        <div class="col-md-6 col-lg-4 scholarship-card" data-category="international">
+            <div class="card h-100 shadow-sm hover-shadow">
+                <div class="card-header bg-white border-0 pt-3 pb-0 d-flex justify-content-between align-items-center">
+                    <span class="badge bg-primary">{% if lang == 'bn' %}আন্তর্জাতিক - তুরস্ক{% else %}International - Turkey{% endif %}</span>
+                    <span class="badge badge-yellow"><i class="fa-regular fa-clock me-1"></i>30 June, 2026</span>
+                </div>
+                <div class="card-body">
+                    <h5 class="card-title fw-bold text-success mb-2">
+                        {% if lang == 'bn' %}তুর্কি বুরসলারি বৃত্তি{% else %}Turkiye Burslari Scholarship{% endif %}
+                    </h5>
+                    <p class="card-text text-muted small mb-3">
+                        {% if lang == 'bn' %}তুরস্কের শীর্ষ বিশ্ববিদ্যালয়গুলোতে সম্পূর্ণ ফান্ডসহ স্নাতক ও মাস্টার্স প্রোগ্রাম।{% else %}Fully funded undergraduate and master's degree programs in top Turkish universities with stipend.{% endif %}
+                    </p>
+                    <ul class="list-unstyled small text-secondary mb-3">
+                        <li><i class="fa-solid fa-check text-success me-2"></i>{% if lang == 'bn' %}১০০% টিউশন ফি ও মাসিক ভাতা{% else %}100% Tuition + Stipend{% endif %}</li>
+                        <li><i class="fa-solid fa-plane text-info me-2"></i>{% if lang == 'bn' %}বিমান ভাড়া অন্তর্ভুক্ত{% else %}Free Airfare Included{% endif %}</li>
+                    </ul>
+                </div>
+                <div class="card-footer bg-white border-0 pb-3">
+                    <a href="https://www.turkiyeburslari.gov.tr" target="_blank" class="btn btn-outline-success btn-sm w-100 fw-bold">
+                        {% if lang == 'bn' %}বিস্তারিত ও আবেদন{% else %}Details & Apply{% endif %}
+                    </a>
+                </div>
+            </div>
+        </div>
+
+        <!-- 3. International: UK (Commonwealth) -->
+        <div class="col-md-6 col-lg-4 scholarship-card" data-category="international">
+            <div class="card h-100 shadow-sm hover-shadow">
+                <div class="card-header bg-white border-0 pt-3 pb-0 d-flex justify-content-between align-items-center">
+                    <span class="badge bg-primary">{% if lang == 'bn' %}আন্তর্জাতিক - ইউকে{% else %}International - UK{% endif %}</span>
+                    <span class="badge badge-yellow"><i class="fa-regular fa-clock me-1"></i>10 July, 2026</span>
+                </div>
+                <div class="card-body">
+                    <h5 class="card-title fw-bold text-success mb-2">
+                        {% if lang == 'bn' %}কমনওয়েলথ বৃত্তি (যুক্তরাজ্য){% else %}Commonwealth Scholarship UK{% endif %}
+                    </h5>
+                    <p class="card-text text-muted small mb-3">
+                        {% if lang == 'bn' %}যুক্তরাজ্যের এফসিডিও-এর অর্থায়নে কমনওয়েলথ নাগরিকদের জন্য মর্যাদাপূর্ণ মাস্টার্স ও পিএইচডি।{% else %}Prestigious master's and PhD scholarships for Commonwealth citizens funded by UK FCDO.{% endif %}
+                    </p>
+                    <ul class="list-unstyled small text-secondary mb-3">
+                        <li><i class="fa-solid fa-check text-success me-2"></i>{% if lang == 'bn' %}সম্পূর্ণ টিউশন ও জীবনযাত্রার খরচ{% else %}Full Tuition & Living Allowance{% endif %}</li>
+                        <li><i class="fa-solid fa-globe text-primary me-2"></i>{% if lang == 'bn' %}ইউকে বিশ্ববিদ্যালয়সমূহ{% else %}UK Universities{% endif %}</li>
+                    </ul>
+                </div>
+                <div class="card-footer bg-white border-0 pb-3">
+                    <a href="https://csuk.fcdo.gov.uk" target="_blank" class="btn btn-outline-success btn-sm w-100 fw-bold">
+                        {% if lang == 'bn' %}বিস্তারিত ও আবেদন{% else %}Details & Apply{% endif %}
+                    </a>
+                </div>
+            </div>
+        </div>
+
+        <!-- 4. International: USA -->
+        <div class="col-md-6 col-lg-4 scholarship-card" data-category="international">
+            <div class="card h-100 shadow-sm hover-shadow">
+                <div class="card-header bg-white border-0 pt-3 pb-0 d-flex justify-content-between align-items-center">
+                    <span class="badge bg-primary">{% if lang == 'bn' %}আন্তর্জাতিক - যুক্তরাষ্ট্র{% else %}International - USA{% endif %}</span>
+                    <span class="badge badge-yellow"><i class="fa-regular fa-clock me-1"></i>15 August, 2026</span>
+                </div>
+                <div class="card-body">
+                    <h5 class="card-title fw-bold text-success mb-2">
+                        {% if lang == 'bn' %}ফুলব্রাইট বৃত্তি (মার্কিন যুক্তরাষ্ট্র){% else %}Fulbright Scholarship USA{% endif %}
+                    </h5>
+                    <p class="card-text text-muted small mb-3">
+                        {% if lang == 'bn' %}যুক্তরাষ্ট্রে অধ্যয়নের জন্য আন্তর্জাতিক শিক্ষার্থীদের সম্পূর্ণ ফান্ডযুক্ত মাস্টার্স ও পিএইচডি সুযোগ।{% else %}Fully funded Master's and PhD opportunities for international students to study in the US.{% endif %}
+                    </p>
+                    <ul class="list-unstyled small text-secondary mb-3">
+                        <li><i class="fa-solid fa-check text-success me-2"></i>{% if lang == 'bn' %}টিউশন, বিমান ও মাসিক ভাতা{% else %}Full Tuition, Airfare & Stipend{% endif %}</li>
+                        <li><i class="fa-solid fa-flag-usa text-danger me-2"></i>{% if lang == 'bn' %}যুক্তরাষ্ট্রের বিশ্ববিদ্যালয়{% else %}US Universities{% endif %}</li>
+                    </ul>
+                </div>
+                <div class="card-footer bg-white border-0 pb-3">
+                    <a href="https://bd.usembassy.gov" target="_blank" class="btn btn-outline-success btn-sm w-100 fw-bold">
+                        {% if lang == 'bn' %}বিস্তারিত ও আবেদন{% else %}Details & Apply{% endif %}
+                    </a>
+                </div>
+            </div>
+        </div>
+
+        <!-- 5. International: France -->
+        <div class="col-md-6 col-lg-4 scholarship-card" data-category="international">
+            <div class="card h-100 shadow-sm hover-shadow">
+                <div class="card-header bg-white border-0 pt-3 pb-0 d-flex justify-content-between align-items-center">
+                    <span class="badge bg-primary">{% if lang == 'bn' %}আন্তর্জাতিক - ফ্রান্স{% else %}International - France{% endif %}</span>
+                    <span class="badge badge-yellow"><i class="fa-regular fa-clock me-1"></i>05 January, 2027</span>
+                </div>
+                <div class="card-body">
+                    <h5 class="card-title fw-bold text-success mb-2">
+                        {% if lang == 'bn' %}আইফেল এক্সিলেন্স স্কলারশিপ (ফ্রান্স){% else %}Eiffel Excellence Scholarship (France){% endif %}
+                    </h5>
+                    <p class="card-text text-muted small mb-3">
+                        {% if lang == 'bn' %}ফরাসি পররাষ্ট্র মন্ত্রণালয় কর্তৃক মেধাবী বিদেশী শিক্ষার্থীদের আকর্ষণের জন্য পরিচালিত বৃত্তি।{% else %}Designed by the French Ministry for Europe and Foreign Affairs to attract top foreign students.{% endif %}
+                    </p>
+                    <ul class="list-unstyled small text-secondary mb-3">
+                        <li><i class="fa-solid fa-check text-success me-2"></i>{% if lang == 'bn' %}মাসিক ভাতা ও অন্যান্য খরচ{% else %}Monthly Allowance & Expenses{% endif %}</li>
+                        <li><i class="fa-solid fa-wine-glass text-info me-2"></i>{% if lang == 'bn' %}ফরাসি বিশ্ববিদ্যালয়সমূহ{% else %}French Universities{% endif %}</li>
+                    </ul>
+                </div>
+                <div class="card-footer bg-white border-0 pb-3">
+                    <a href="https://www.campusfrance.org" target="_blank" class="btn btn-outline-success btn-sm w-100 fw-bold">
+                        {% if lang == 'bn' %}বিস্তারিত ও আবেদন{% else %}Details & Apply{% endif %}
+                    </a>
+                </div>
+            </div>
+        </div>
+
+        <!-- 6. International: Qatar, Switzerland, Malaysia -->
+        <div class="col-md-6 col-lg-4 scholarship-card" data-category="international">
+            <div class="card h-100 shadow-sm hover-shadow">
+                <div class="card-header bg-white border-0 pt-3 pb-0 d-flex justify-content-between align-items-center">
+                    <span class="badge bg-primary">{% if lang == 'bn' %}আন্তর্জাতিক - কাতার/সুইজারল্যান্ড{% else %}International - Qatar/Swiss{% endif %}</span>
+                    <span class="badge badge-yellow"><i class="fa-regular fa-clock me-1"></i>30 July, 2026</span>
+                </div>
+                <div class="card-body">
+                    <h5 class="card-title fw-bold text-success mb-2">
+                        {% if lang == 'bn' %}কাতার ও ইটিএইচ জুরিখ গ্র্যান্টস{% else %}Qatar University & ETH Zurich Grants{% endif %}
+                    </h5>
+                    <p class="card-text text-muted small mb-3">
+                        {% if lang == 'bn' %}কাতার ইউনিভার্সিটি এবং সুইজারল্যান্ডের ইটিএইচ জুরিখে আন্তর্জাতিক শিক্ষার্থীদের জন্য ফুল ফান্ড।{% else %}Fully funded scholarships at Qatar University and ETH Zurich (Switzerland).{% endif %}
+                    </p>
+                    <ul class="list-unstyled small text-secondary mb-3">
+                        <li><i class="fa-solid fa-check text-success me-2"></i>{% if lang == 'bn' %}বিনামূল্যে আবাসন ও টিউশন{% else %}Free Housing & Tuition{% endif %}</li>
+                        <li><i class="fa-solid fa-mountain text-warning me-2"></i>{% if lang == 'bn' %}মধ্যপ্রাচ্য ও ইউরোপ{% else %}Middle East & Europe{% endif %}</li>
+                    </ul>
+                </div>
+                <div class="card-footer bg-white border-0 pb-3">
+                    <a href="https://www.qu.edu.qa" target="_blank" class="btn btn-outline-success btn-sm w-100 fw-bold">
+                        {% if lang == 'bn' %}বিস্তারিত ও আবেদন{% else %}Details & Apply{% endif %}
+                    </a>
+                </div>
+            </div>
+        </div>
+
+        <!-- 7. University: BUET -->
+        <div class="col-md-6 col-lg-4 scholarship-card" data-category="university">
+            <div class="card h-100 shadow-sm hover-shadow">
+                <div class="card-header bg-white border-0 pt-3 pb-0 d-flex justify-content-between align-items-center">
+                    <span class="badge bg-dark">{% if lang == 'bn' %}বিশ্ববিদ্যালয় - বুয়েট{% else %}University - BUET{% endif %}</span>
+                    <span class="badge badge-yellow">{% if lang == 'bn' %}চলমান{% else %}Ongoing{% endif %}</span>
+                </div>
+                <div class="card-body">
+                    <h5 class="card-title fw-bold text-success mb-2">
+                        {% if lang == 'bn' %}বুয়েট ডিনস লিস্ট ও মেধা বৃত্তি{% else %}BUET Dean's List & Merit Stipend{% endif %}
+                    </h5>
+                    <p class="card-text text-muted small mb-3">
+                        {% if lang == 'bn' %}বুয়েটের স্নাতক ইঞ্জিনিয়ারিং শিক্ষার্থীদের জন্য এক্সিলেন্স অ্যাওয়ার্ড ও টিউশন ফি মওকুফ।{% else %}Excellence awards and tuition fee waivers for top undergraduate engineering students at BUET.{% endif %}
+                    </p>
+                    <ul class="list-unstyled small text-secondary mb-3">
+                        <li><i class="fa-solid fa-check text-success me-2"></i>{% if lang == 'bn' %}টার্ম জিপিএ ৩.৭৫+{% else %}Term GPA 3.75+{% endif %}</li>
+                        <li><i class="fa-solid fa-laptop-code text-primary me-2"></i>{% if lang == 'bn' %}ইঞ্জিনিয়ারিং ওয়েভার{% else %}Engineering Waiver{% endif %}</li>
+                    </ul>
+                </div>
+                <div class="card-footer bg-white border-0 pb-3">
+                    <a href="https://www.buet.ac.bd" target="_blank" class="btn btn-outline-success btn-sm w-100 fw-bold">
+                        {% if lang == 'bn' %}বিস্তারিত ও আবেদন{% else %}Details & Apply{% endif %}
+                    </a>
+                </div>
+            </div>
+        </div>
+
+        <!-- 8. University: DU -->
+        <div class="col-md-6 col-lg-4 scholarship-card" data-category="university">
+            <div class="card h-100 shadow-sm hover-shadow">
+                <div class="card-header bg-white border-0 pt-3 pb-0 d-flex justify-content-between align-items-center">
+                    <span class="badge bg-dark">{% if lang == 'bn' %}বিশ্ববিদ্যালয় - ঢাকা বিশ্ববিদ্যালয়{% else %}University - DU{% endif %}</span>
+                    <span class="badge badge-yellow">{% if lang == 'bn' %}চলমান{% else %}Ongoing{% endif %}</span>
+                </div>
+                <div class="card-body">
+                    <h5 class="card-title fw-bold text-success mb-2">
+                        {% if lang == 'bn' %}ঢাকা বিশ্ববিদ্যালয় ট্রাস্ট ফান্ড বৃত্তি{% else %}Dhaka University Trust Fund{% endif %}
+                    </h5>
+                    <p class="card-text text-muted small mb-3">
+                        {% if lang == 'bn' %}ঢাকা বিশ্ববিদ্যালয়ের বিভিন্ন অনুষদের মেধাবী ও অসচ্ছল শিক্ষার্থীদের জন্য বৃত্তি।{% else %}Merit and needy student scholarship programs across various faculties of Dhaka University.{% endif %}
+                    </p>
+                    <ul class="list-unstyled small text-secondary mb-3">
+                        <li><i class="fa-solid fa-check text-success me-2"></i>{% if lang == 'bn' %}সিজিপিএ ৩.৫০+{% else %}CGPA 3.50+{% endif %}</li>
+                        <li><i class="fa-solid fa-coins text-warning me-2"></i>৳১৫,০০০ / {% if lang == 'bn' %}সেমিস্টার{% else %}Semester{% endif %}</li>
+                    </ul>
+                </div>
+                <div class="card-footer bg-white border-0 pb-3">
+                    <a href="https://www.du.ac.bd" target="_blank" class="btn btn-outline-success btn-sm w-100 fw-bold">
+                        {% if lang == 'bn' %}বিস্তারিত ও আবেদন{% else %}Details & Apply{% endif %}
+                    </a>
+                </div>
+            </div>
+        </div>
+
+        <!-- 9. University: BUP -->
+        <div class="col-md-6 col-lg-4 scholarship-card" data-category="university">
+            <div class="card h-100 shadow-sm hover-shadow">
+                <div class="card-header bg-white border-0 pt-3 pb-0 d-flex justify-content-between align-items-center">
+                    <span class="badge bg-dark">{% if lang == 'bn' %}বিশ্ববিদ্যালয় - বিইউপি{% else %}University - BUP{% endif %}</span>
+                    <span class="badge badge-yellow">{% if lang == 'bn' %}চলমান{% else %}Ongoing{% endif %}</span>
+                </div>
+                <div class="card-body">
+                    <h5 class="card-title fw-bold text-success mb-2">
+                        {% if lang == 'bn' %}বিইউপি মেধা বৃত্তি{% else %}BUP Merit Scholarship{% endif %}
+                    </h5>
+                    <p class="card-text text-muted small mb-3">
+                        {% if lang == 'bn' %}বাংলাদেশ ইউনিভার্সিটি অব প্রফেশনালস-এর শীর্ষ শিক্ষার্থীদের জন্য বিশেষ টিউশন ফি মওকুফ।{% else %}Special semester tuition fee waivers and grants for top ranking students at BUP.{% endif %}
+                    </p>
+                    <ul class="list-unstyled small text-secondary mb-3">
+                        <li><i class="fa-solid fa-check text-success me-2"></i>{% if lang == 'bn' %}সেমিস্টারে সেরা ৫%{% else %}Top 5% in Semester{% endif %}</li>
+                        <li><i class="fa-solid fa-award text-success me-2"></i>{% if lang == 'bn' %}ফি মওকুফ{% else %}Fee Waiver{% endif %}</li>
+                    </ul>
+                </div>
+                <div class="card-footer bg-white border-0 pb-3">
+                    <a href="https://www.bup.edu.bd" target="_blank" class="btn btn-outline-success btn-sm w-100 fw-bold">
+                        {% if lang == 'bn' %}বিস্তারিত ও আবেদন{% else %}Details & Apply{% endif %}
+                    </a>
+                </div>
+            </div>
+        </div>
+
+        <!-- 10. University: JU & JNU -->
+        <div class="col-md-6 col-lg-4 scholarship-card" data-category="university">
+            <div class="card h-100 shadow-sm hover-shadow">
+                <div class="card-header bg-white border-0 pt-3 pb-0 d-flex justify-content-between align-items-center">
+                    <span class="badge bg-dark">{% if lang == 'bn' %}বিশ্ববিদ্যালয় - জাবি ও জবি{% else %}University - JU & JNU{% endif %}</span>
+                    <span class="badge badge-yellow">{% if lang == 'bn' %}চলমান{% else %}Ongoing{% endif %}</span>
+                </div>
+                <div class="card-body">
+                    <h5 class="card-title fw-bold text-success mb-2">
+                        {% if lang == 'bn' %}জাহাঙ্গীরনগর ও জগন্নাথ বিশ্ববিদ্যালয় বৃত্তি{% else %}Jahangirnagar & Jagannath Univ. Stipends{% endif %}
+                    </h5>
+                    <p class="card-text text-muted small mb-3">
+                        {% if lang == 'bn' %}জাবি এবং জবির নিয়মিত স্নাতক শিক্ষার্থীদের জন্য সরকারি ও বিশ্ববিদ্যালয় অনুদান।{% else %}Government and university-funded grants for regular undergraduate students at JU and JNU.{% endif %}
+                    </p>
+                    <ul class="list-unstyled small text-secondary mb-3">
+                        <li><i class="fa-solid fa-check text-success me-2"></i>{% if lang == 'bn' %}নিয়মিত শিক্ষার্থী{% else %}Regular Enrolment{% endif %}</li>
+                        <li><i class="fa-solid fa-graduation-cap text-success me-2"></i>{% if lang == 'bn' %}মাসিক অনুদান{% else %}Monthly Stipend{% endif %}</li>
+                    </ul>
+                </div>
+                <div class="card-footer bg-white border-0 pb-3">
+                    <a href="https://juniv.edu" target="_blank" class="btn btn-outline-success btn-sm w-100 fw-bold">
+                        {% if lang == 'bn' %}বিস্তারিত ও আবেদন{% else %}Details & Apply{% endif %}
+                    </a>
+                </div>
+            </div>
+        </div>
+
+    </div>
+
+</div>
+
+<!-- JavaScript for Filter & Search functionality -->
+<script>
+    document.addEventListener("DOMContentLoaded", function () {
+        const categoryFilter = document.getElementById("categoryFilter");
+        const searchInput = document.getElementById("searchInput");
+        const filterBtn = document.getElementById("filterBtn");
+        const cards = document.querySelectorAll(".scholarship-card");
+
+        function filterScholarships() {
+            const selectedCategory = categoryFilter.value.toLowerCase();
+            const searchText = searchInput.value.toLowerCase();
+
+            cards.forEach(card => {
+                const cardCategory = card.getAttribute("data-category").toLowerCase();
+                const cardText = card.innerText.toLowerCase();
+
+                const matchesCategory = (selectedCategory === "all" || cardCategory === selectedCategory);
+                const matchesSearch = cardText.includes(searchText);
+
+                if (matchesCategory && matchesSearch) {
+                    card.style.display = "block";
+                } else {
+                    card.style.display = "none";
+                }
+            });
+        }
+
+        categoryFilter.addEventListener("change", filterScholarships);
+        filterBtn.addEventListener("click", filterScholarships);
+        searchInput.addEventListener("keyup", filterScholarships);
+    });
+</script>
+{% endblock %}

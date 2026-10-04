@@ -1,0 +1,94 @@
+{% extends 'base.html' %}
+{% block content %}
+<div class="container py-5">
+    <!-- Header -->
+    <div class="row mb-4">
+        <div class="col-md-12 text-center">
+            <h2 class="fw-bold text-warning text-dark">
+                <i class="fa-solid fa-users-rectangle me-2"></i>
+                {% if lang == 'bn' %}স্বেচ্ছাসেবক নিবন্ধন ও সামাজিক কার্যক্রম পোর্টাল{% else %}Volunteer Registration & Community Portal{% endif %}
+            </h2>
+            <p class="text-muted w-75 mx-auto">
+                {% if lang == 'bn' %}দুর্যোগ মোকাবিলা, ত্রাণ বিতরণ, রক্তদান এবং জনসেবামূলক কার্যক্রমে যুক্ত হয়ে দেশের সেবায় অংশগ্রহণ করুন।{% else %}Join disaster response, relief distribution, blood donation, and community development initiatives.{% endif %}
+            </p>
+        </div>
+    </div>
+
+    <div class="row g-4 align-items-center">
+        <!-- Registration Form -->
+        <div class="col-md-6">
+            <div class="card shadow-sm border-0 p-4">
+                <h4 class="fw-bold mb-3 text-success"><i class="fa-solid fa-user-plus me-2"></i>নতুন স্বেচ্ছাসেবক নিবন্ধন ফরম</h4>
+                <form>
+                    <div class="mb-3">
+                        <label class="form-label fw-bold">পূর্ণ নাম (Full Name)</label>
+                        <input type="text" class="form-control" placeholder="আপনার নাম লিখুন">
+                    </div>
+                    <div class="row">
+                        <div class="col-md-6 mb-3">
+                            <label class="form-label fw-bold">মোবাইল নম্বর</label>
+                            <input type="text" class="form-control" placeholder="০১৭XXXXXXXX">
+                        </div>
+                        <div class="col-md-6 mb-3">
+                            <label class="form-label fw-bold">রক্তের গ্রুপ</label>
+                            <select class="form-select">
+                                <option selected>নির্বাচন করুন</option>
+                                <option>A+</option>
+                                <option>A-</option>
+                                <option>B+</option>
+                                <option>B-</option>
+                                <option>O+</option>
+                                <option>O-</option>
+                                <option>AB+</option>
+                                <option>AB-</option>
+                            </select>
+                        </div>
+                    </div>
+                    <div class="mb-3">
+                        <label class="form-label fw-bold">এলাকা / উপজেলা / জেলা</label>
+                        <input type="text" class="form-control" placeholder="যেমন: সাভার, ঢাকা">
+                    </div>
+                    <div class="mb-3">
+                        <label class="form-label fw-bold">আগ্রহী কাজের ক্ষেত্র</label>
+                        <select class="form-select">
+                            <option>দুর্যোগ ব্যবস্থাপনা ও ত্রাণ বিতরণ</option>
+                            <option>রক্তদান ও স্বাস্থ্য ক্যাম্পেইন</option>
+                            <option>শিক্ষা ও সচেতনতা কার্যক্রম</option>
+                        </select>
+                    </div>
+                    <button type="submit" class="btn btn-success w-100 fw-bold py-2 shadow-sm">
+                        <i class="fa-solid fa-paper-plane me-2"></i>নিবন্ধন সম্পন্ন করুন
+                    </button>
+                </form>
+            </div>
+        </div>
+
+        <!-- Active Volunteer Events -->
+        <div class="col-md-6">
+            <div class="card shadow-sm border-0 p-4 bg-light h-100">
+                <h4 class="fw-bold mb-4 text-dark"><i class="fa-solid fa-calendar-days me-2 text-danger"></i>চলমান স্বেচ্ছাসেবী কার্যক্রম</h4>
+                <div class="list-group list-group-flush gap-3 bg-transparent">
+                    <!-- Event 1 -->
+                    <div class="list-group-item bg-white shadow-sm rounded p-3 border-0">
+                        <div class="d-flex justify-content-between align-items-center mb-1">
+                            <h6 class="fw-bold text-danger mb-0">বন্যা দুর্গতদের মাঝে ত্রাণ বিতরণ - সিলেট</h6>
+                            <span class="badge bg-danger">জরুরি</span>
+                        </div>
+                        <p class="text-muted small mb-2"><i class="fa-regular fa-calendar me-1"></i>তারিখ: ২৮ মে, ২০২৬ | <i class="fa-solid fa-user-group me-1"></i>প্রয়োজনীয় স্বেচ্ছাসেবক: ৫০ জন</p>
+                        <button class="btn btn-outline-danger btn-sm fw-bold">যুক্ত হোন</button>
+                    </div>
+                    <!-- Event 2 -->
+                    <div class="list-group-item bg-white shadow-sm rounded p-3 border-0">
+                        <div class="d-flex justify-content-between align-items-center mb-1">
+                            <h6 class="fw-bold text-success mb-0">রক্তদান ও ফ্রি মেডিকেল ক্যাম্প - ঢাকা বিশ্ববিদ্যালয়</h6>
+                            <span class="badge bg-success">আসন্ন</span>
+                        </div>
+                        <p class="text-muted small mb-2"><i class="fa-regular fa-calendar me-1"></i>তারিখ: ৫ জুন, ২০২৬ | <i class="fa-solid fa-user-group me-1"></i>প্রয়োজনীয় স্বেচ্ছাসেবক: ২০ জন</p>
+                        <button class="btn btn-outline-success btn-sm fw-bold">যুক্ত হোন</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}

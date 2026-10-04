@@ -1,0 +1,120 @@
+{% extends 'base.html' %}
+{% block content %}
+<div class="container py-5">
+    <!-- Header -->
+    <div class="row mb-4">
+        <div class="col-md-12 text-center">
+            <h2 class="fw-bold text-primary">
+                <i class="fa-solid fa-phone-volume me-2"></i>
+                {% if lang == 'bn' %}জাতীয় জরুরি সেবা ও হটলাইন নম্বরসমূহ{% else %}National Emergency Services & Hotlines{% endif %}
+            </h2>
+            <p class="text-muted w-75 mx-auto">
+                {% if lang == 'bn' %}যেকোনো বিপদ, দুর্ঘটনা, অপরাধ দমন বা স্বাস্থ্যগত জরুরি পরিস্থিতিতে ২৪ ঘণ্টা তাৎক্ষণিক সহায়তার জন্য নিচের হটলাইনগুলোতে কল করুন।{% else %}Call the hotlines below 24/7 for immediate assistance in any accident, crime, or health emergency.{% endif %}
+            </p>
+        </div>
+    </div>
+
+    <!-- Search / Filter Hotline -->
+    <div class="row mb-5 justify-content-center">
+        <div class="col-md-6">
+            <div class="input-group shadow-sm">
+                <input type="text" class="form-control form-control-lg" placeholder="সেবা বা বিভাগ খুঁজুন (যেমন: পুলিশ, ফায়ার সার্ভিস)...">
+                <button class="btn btn-primary px-4 fw-bold" type="button"><i class="fa-solid fa-search"></i></button>
+            </div>
+        </div>
+    </div>
+
+    <!-- Main Grid of Hotlines -->
+    <div class="row g-4">
+        <!-- 999 -->
+        <div class="col-md-4">
+            <div class="card shadow-sm border-top border-primary border-5 text-center p-4 h-100 hover-shadow transition">
+                <div class="card-body">
+                    <div class="rounded-circle bg-primary bg-opacity-10 p-3 d-inline-flex mb-3">
+                        <i class="fa-solid fa-shield-halved text-primary fs-1"></i>
+                    </div>
+                    <h4 class="fw-bold text-dark">জাতীয় জরুরি সেবা</h4>
+                    <h2 class="text-danger fw-bold display-5 my-3">999</h2>
+                    <p class="text-muted small">পুলিশ, ফায়ার সার্ভিস এবং অ্যাম্বুলেন্স সেবা পেতে সম্পূর্ণ টোল-ফ্রি নম্বর। দিনরাত ২৪ ঘণ্টা সচল।</p>
+                    <a href="tel:999" class="btn btn-primary w-100 fw-bold mt-2"><i class="fa-solid fa-phone me-2"></i>এখনই কল করুন</a>
+                </div>
+            </div>
+        </div>
+
+        <!-- Fire Service -->
+        <div class="col-md-4">
+            <div class="card shadow-sm border-top border-danger border-5 text-center p-4 h-100 hover-shadow transition">
+                <div class="card-body">
+                    <div class="rounded-circle bg-danger bg-opacity-10 p-3 d-inline-flex mb-3">
+                        <i class="fa-solid fa-fire-extinguisher text-danger fs-1"></i>
+                    </div>
+                    <h4 class="fw-bold text-dark">ফায়ার সার্ভিস ও সিভিল ডিফেন্স</h4>
+                    <h2 class="text-danger fw-bold display-5 my-3">১০২</h2>
+                    <p class="text-muted small">যেকোনো অগ্নিকাণ্ড, ভবন ধস কিংবা উদ্ধার অভিযানে ফায়ার সার্ভিস কন্ট্রোল রুমের সাথে সরাসরি যোগাযোগ।</p>
+                    <a href="tel:102" class="btn btn-danger w-100 fw-bold mt-2"><i class="fa-solid fa-phone me-2"></i>এখনই কল করুন</a>
+                </div>
+            </div>
+        </div>
+
+        <!-- Health Helpline -->
+        <div class="col-md-4">
+            <div class="card shadow-sm border-top border-success border-5 text-center p-4 h-100 hover-shadow transition">
+                <div class="card-body">
+                    <div class="rounded-circle bg-success bg-opacity-10 p-3 d-inline-flex mb-3">
+                        <i class="fa-solid fa-hospital-user text-success fs-1"></i>
+                    </div>
+                    <h4 class="fw-bold text-dark">স্বাস্থ্য বাতায়ন</h4>
+                    <h2 class="text-success fw-bold display-5 my-3">16263</h2>
+                    <p class="text-muted small">সরকারি স্বাস্থ্য সেবা, বিশেষজ্ঞ চিকিৎসকের পরামর্শ এবং জরুরি অ্যাম্বুলেন্স বুকিং সেবা।</p>
+                    <a href="tel:16263" class="btn btn-success w-100 fw-bold mt-2"><i class="fa-solid fa-phone me-2"></i>এখনই কল করুন</a>
+                </div>
+            </div>
+        </div>
+
+        <!-- Women & Child Abuse -->
+        <div class="col-md-4">
+            <div class="card shadow-sm border-top border-warning border-5 text-center p-4 h-100 hover-shadow transition">
+                <div class="card-body">
+                    <div class="rounded-circle bg-warning bg-opacity-10 p-3 d-inline-flex mb-3">
+                        <i class="fa-solid fa-hands-holding-child text-warning text-dark fs-1"></i>
+                    </div>
+                    <h4 class="fw-bold text-dark">নারী ও শিশু নির্যাতন হেল্পলাইন</h4>
+                    <h2 class="text-warning text-dark fw-bold display-5 my-3">109</h2>
+                    <p class="text-muted small">নারী ও শিশুর প্রতি সহিংসতা রোধে এবং আইনি সহায়তার জন্য সরকারি টোল-ফ্রি হেল্পলাইন।</p>
+                    <a href="tel:109" class="btn btn-warning text-dark w-100 fw-bold mt-2"><i class="fa-solid fa-phone me-2"></i>এখনই কল করুন</a>
+                </div>
+            </div>
+        </div>
+
+        <!-- National Helpline -->
+        <div class="col-md-4">
+            <div class="card shadow-sm border-top border-info border-5 text-center p-4 h-100 hover-shadow transition">
+                <div class="card-body">
+                    <div class="rounded-circle bg-info bg-opacity-10 p-3 d-inline-flex mb-3">
+                        <i class="fa-solid fa-circle-info text-info fs-1"></i>
+                    </div>
+                    <h4 class="fw-bold text-dark">জাতীয় তথ্য বাতায়ন</h4>
+                    <h2 class="text-info fw-bold display-5 my-3">333</h2>
+                    <p class="text-muted small">সরকারি সেবার তথ্য, সামাজিক সমস্যা প্রতিকার ও অভিযোগ জানাতে কল করুন ৩৩৩ নম্বরে।</p>
+                    <a href="tel:333" class="btn btn-info text-white w-100 fw-bold mt-2"><i class="fa-solid fa-phone me-2"></i>এখনই কল করুন</a>
+                </div>
+            </div>
+        </div>
+
+        <!-- Anticorruption -->
+        <div class="col-md-4">
+            <div class="card shadow-sm border-top border-secondary border-5 text-center p-4 h-100 hover-shadow transition">
+                <div class="card-body">
+                    <div class="rounded-circle bg-secondary bg-opacity-10 p-3 d-inline-flex mb-3">
+                        <i class="fa-solid fa-scale-balanced text-secondary fs-1"></i>
+                    </div>
+                    <h4 class="fw-bold text-dark">দুদক হটলাইন</h4>
+                    <h2 class="text-secondary fw-bold display-5 my-3">106</h2>
+                    <p class="text-muted small">দুর্নীতি দমন কমিশন সংক্রান্ত অভিযোগ জানাতে এবং তথ্য প্রদান করতে দুর্নীতি বিরোধী হটলাইন।</p>
+                    <a href="tel:106" class="btn btn-secondary w-100 fw-bold mt-2"><i class="fa-solid fa-phone me-2"></i>এখনই কল করুন</a>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}

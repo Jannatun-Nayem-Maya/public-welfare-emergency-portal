@@ -1,0 +1,135 @@
+{% extends 'base.html' %}
+{% block content %}
+<div class="container py-5">
+    <!-- Header Section -->
+    <div class="row mb-4">
+        <div class="col-md-12">
+            <h2 class="fw-bold text-success">
+                <i class="fa-solid fa-hand-holding-dollar me-2"></i>
+                {% if lang == 'bn' %}দুর্যোগ ত্রাণ ও সরকারি আর্থিক সহায়তা আবেদন ফরম{% else %}Disaster Relief & Government Financial Aid Application Form{% endif %}
+            </h2>
+            <p class="text-muted">
+                {% if lang == 'bn' %}বন্যা, ঘূর্ণিঝড় বা প্রাকৃতিক দুর্যোগে ক্ষতিগ্রস্ত পরিবারগুলোর জন্য সরকারি জরুরি ত্রাণ ও আর্থিক অনুদান প্রাপ্তির আবেদন পোর্টাল।{% else %}Official application portal for government emergency relief and financial grants for families affected by natural disasters.{% endif %}
+            </p>
+        </div>
+    </div>
+
+    <!-- Instruction Alert -->
+    <div class="alert alert-warning shadow-sm p-4 mb-4 border-start border-warning border-5 bg-white" role="alert">
+        <h5 class="alert-heading fw-bold text-dark"><i class="fa-solid fa-circle-info me-2 text-warning"></i>আবেদনের নির্দেশিকা ও শর্তাবলী:</h5>
+        <ul class="mb-0 text-muted small">
+            <li>সঠিক জাতীয় পরিচয়পত্র (NID) নম্বর এবং সচল মোবাইল নম্বর প্রদান করুন।</li>
+            <li>ক্ষতিগ্রস্ত এলাকার সত্যতা যাচাইয়ের জন্য দৃশ্যমান প্রমাণ বা ছবি আপলোড করা বাধ্যতামূলক।</li>
+            <li>যাচাই সম্পন্ন হওয়ার পর সরকারি অনুদানের অর্থ সরাসরি আপনার মোবাইল ব্যাংকিং বা ব্যাংক অ্যাকাউন্টে পৌঁছে যাবে।</li>
+        </ul>
+    </div>
+
+    <!-- Main Application Form Card -->
+    <div class="card shadow-sm border-0 p-4 bg-light">
+        <div class="card-body">
+            <form action="/relief-apply" method="POST" enctype="multipart/form-data">
+                
+                <!-- Section 1: Personal Information -->
+                <h5 class="fw-bold text-dark mb-3 border-bottom pb-2">১. আবেদনকারীর ব্যক্তিগত তথ্য</h5>
+                <div class="row g-3 mb-4">
+                    <div class="col-md-6">
+                        <label class="form-label fw-bold">আবেদনকারীর পূর্ণ নাম (Full Name) *</label>
+                        <input type="text" class="form-control" placeholder="এনআইডি কার্ড অনুযায়ী নাম লিখুন" required>
+                    </div>
+                    <div class="col-md-6">
+                        <label class="form-label fw-bold">জাতীয় পরিচয়পত্র (NID) নম্বর *</label>
+                        <input type="text" class="form-control" placeholder="১০ বা ১৭ ডিজিটের এনআইডি নম্বর" required>
+                    </div>
+                    <div class="col-md-6">
+                        <label class="form-label fw-bold">মোবাইল নম্বর (সচল) *</label>
+                        <input type="text" class="form-control" placeholder="০১৭XXXXXXXX" required>
+                    </div>
+                    <div class="col-md-6">
+                        <label class="form-label fw-bold">পিতা / স্বামীর নাম</label>
+                        <input type="text" class="form-control" placeholder="নাম লিখুন">
+                    </div>
+                </div>
+
+                <!-- Section 2: Location Details -->
+                <h5 class="fw-bold text-dark mb-3 border-bottom pb-2">২. বর্তমান ঠিকানা ও ক্ষয়ক্ষতির বিবরণ</h5>
+                <div class="row g-3 mb-4">
+                    <div class="col-md-4">
+                        <label class="form-label fw-bold">জেলা *</label>
+                        <select class="form-select" required>
+                            <option selected disabled>জেলা নির্বাচন করুন</option>
+                            <option>সিলেট</option>
+                            <option>সুনামগঞ্জ</option>
+                            <option>কুড়িগ্রাম</option>
+                            <option>নোয়াখালী</option>
+                            <option>বরগুনা</option>
+                        </select>
+                    </div>
+                    <div class="col-md-4">
+                        <label class="form-label fw-bold">উপজেলা / থানা *</label>
+                        <input type="text" class="form-control" placeholder="উপজেলার নাম লিখুন" required>
+                    </div>
+                    <div class="col-md-4">
+                        <label class="form-label fw-bold">ইউনিয়ন / ওয়ার্ড / গ্রাম</label>
+                        <input type="text" class="form-control" placeholder="এলাকার নাম লিখুন">
+                    </div>
+                    <div class="col-md-6">
+                        <label class="form-label fw-bold">দুর্যোগের ধরণ *</label>
+                        <select class="form-select" required>
+                            <option selected disabled>দুর্যোগ নির্বাচন করুন</option>
+                            <option>আকস্মিক বন্যা (Flash Flood)</option>
+                            <option>ঘূর্ণিঝড় ও জলোচ্ছ্বাস (Cyclone)</option>
+                            <option>নদী ভাঙন (River Bank Erosion)</option>
+                            <option>তীব্র খরা বা অন্যান্য</option>
+                        </select>
+                    </div>
+                    <div class="col-md-6">
+                        <label class="form-label fw-bold">ক্ষতির মাত্রা *</label>
+                        <select class="form-select" required>
+                            <option selected disabled>ক্ষতির মাত্রা নির্বাচন করুন</option>
+                            <option>সম্পূর্ণ ঘরবাড়ি ক্ষতিগ্রস্ত (Severe)</option>
+                            <option>আংশিক ক্ষতিগ্রস্ত (Moderate)</option>
+                            <option>খাদ্য ও পানীয় সংকট (Minor)</option>
+                        </select>
+                    </div>
+                    <div class="col-md-12">
+                        <label class="form-label fw-bold">ক্ষতির বিস্তারিত বিবরণ *</label>
+                        <textarea class="form-control" rows="3" placeholder="আপনার ক্ষয়ক্ষতির সংক্ষিপ্ত বর্ণনা এখানে লিখুন..." required></textarea>
+                    </div>
+                </div>
+
+                <!-- Section 3: Evidence & Financial Info -->
+                <h5 class="fw-bold text-dark mb-3 border-bottom pb-2">৩. প্রমাণক ও আর্থিক অনুদান গ্রহণ মাধ্যম</h5>
+                <div class="row g-3 mb-4">
+                    <div class="col-md-6">
+                        <label class="form-label fw-bold">ক্ষতিগ্রস্ত এলাকার ছবি / প্রমাণক ডকুমেন্ট আপলোড করুন *</label>
+                        <input type="file" class="form-control" required>
+                        <small class="text-muted">জেপিজি, পিএনজি বা পিডিএফ ফাইল (সর্বোচ্চ ৫ মেগাবাইট)</small>
+                    </div>
+                    <div class="col-md-6">
+                        <label class="form-label fw-bold">অনুদানের মাধ্যম নির্বাচন করুন *</label>
+                        <select class="form-select" required>
+                            <option selected disabled>মাঝামাঝি মাধ্যম সিলেক্ট করুন</option>
+                            <option>বিকাশ (bKash)</option>
+                            <option>নগদ (Nagad)</option>
+                            <option>রকেট (Rocket)</option>
+                            <option>ব্যাংক অ্যাকাউন্ট (Bank Account)</option>
+                        </select>
+                    </div>
+                    <div class="col-md-6">
+                        <label class="form-label fw-bold">অ্যাকাউন্ট / ওয়ালেট নম্বর *</label>
+                        <input type="text" class="form-control" placeholder="নম্বরটি লিখুন" required>
+                    </div>
+                </div>
+
+                <!-- Submit Button -->
+                <div class="text-center mt-4">
+                    <button type="submit" class="btn btn-success btn-lg px-5 fw-bold shadow-sm">
+                        <i class="fa-solid fa-paper-plane me-2"></i>ত্রাণ সহায়তার আবেদন জমা দিন
+                    </button>
+                </div>
+
+            </form>
+        </div>
+    </div>
+</div>
+{% endblock %}

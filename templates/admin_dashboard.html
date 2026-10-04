@@ -1,0 +1,94 @@
+{% extends 'base.html' %}
+{% block content %}
+<div class="container py-5">
+    <!-- Admin Header -->
+    <div class="row mb-4">
+        <div class="col-md-12">
+            <div class="card shadow-sm border-0 bg-dark text-white p-4">
+                <div class="d-flex justify-content-between align-items-center">
+                    <div>
+                        <h2 class="fw-bold mb-1"><i class="fa-solid fa-user-shield me-2 text-warning"></i>অফিসার / প্রশাসক ড্যাশবোর্ড (Admin Control Panel)</h2>
+                        <p class="mb-0 text-white-50">জনসেবা পোর্টাল সিস্টেম ভেরিফিকেশন ও ম্যানেজমেন্ট প্যানেল</p>
+                    </div>
+                    <span class="badge bg-danger fs-6 px-3 py-2">সুপার অ্যাডমিন</span>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Admin Stats Cards -->
+    <div class="row g-4 mb-5">
+        <div class="col-md-3">
+            <div class="card shadow-sm border-0 p-3 text-center bg-white">
+                <h6 class="text-muted mb-1">মোট নাগরিক নিবন্ধন</h6>
+                <h3 class="fw-bold text-dark mb-0">১২,৪৫০ জন</h3>
+            </div>
+        </div>
+        <div class="col-md-3">
+            <div class="card shadow-sm border-0 p-3 text-center bg-white">
+                <h6 class="text-muted mb-1">নতুন আবেদন জমা পড়েছে</h6>
+                <h3 class="fw-bold text-warning mb-0">৪৩০ টি</h3>
+            </div>
+        </div>
+        <div class="col-md-3">
+            <div class="card shadow-sm border-0 p-3 text-center bg-white">
+                <h6 class="text-muted mb-1">অনুমোদিত সহায়তা</h6>
+                <h3 class="fw-bold text-success mb-0">৩,৮২০ টি</h3>
+            </div>
+        </div>
+        <div class="col-md-3">
+            <div class="card shadow-sm border-0 p-3 text-center bg-white">
+                <h6 class="text-muted mb-1">সক্রিয় আশ্রয়কেন্দ্র</h6>
+                <h3 class="fw-bold text-danger mb-0">১৮ টি</h3>
+            </div>
+        </div>
+    </div>
+
+    <!-- Verification Table Section -->
+    <div class="row">
+        <div class="col-md-12">
+            <div class="card shadow-sm border-0 p-4">
+                <h4 class="fw-bold mb-4 text-dark"><i class="fa-solid fa-list-check me-2 text-success"></i>নাগরিক আবেদন ও ত্রাণের ভেরিফিকেশন কিউ</h4>
+                <div class="table-responsive">
+                    <table class="table table-hover align-middle">
+                        <thead class="table-dark">
+                            <tr>
+                                <th>আবেদন আইডি</th>
+                                <th>আবেদনকারীর নাম</th>
+                                <th>এনআইডি নম্বর</th>
+                                <th>সেবার ধরণ</th>
+                                <th>এলাকা</th>
+                                <th>অ্যাকশন</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td class="fw-bold">#APP-891</td>
+                                <td>আব্দুর রহিম</td>
+                                <td>1998542109876</td>
+                                <td>দুর্যোগ ত্রাণ</td>
+                                <td>সিলেট সদর</td>
+                                <td>
+                                    <button class="btn btn-success btn-sm fw-bold me-1"><i class="fa-solid fa-check"></i> অনুমোদন</button>
+                                    <button class="btn btn-danger btn-sm fw-bold"><i class="fa-solid fa-xmark"></i> বাতিল</button>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td class="fw-bold">#APP-892</td>
+                                <td>মোছা. মরিয়ম বেগম</td>
+                                <td>1975412365987</td>
+                                <td>বয়স্ক ভাতা</td>
+                                <td>সুনামগঞ্জ</td>
+                                <td>
+                                    <button class="btn btn-success btn-sm fw-bold me-1"><i class="fa-solid fa-check"></i> অনুমোদন</button>
+                                    <button class="btn btn-danger btn-sm fw-bold"><i class="fa-solid fa-xmark"></i> বাতিল</button>
+                                </td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}

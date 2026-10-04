@@ -1,0 +1,109 @@
+
+{% extends 'base.html' %}
+{% block content %}
+<div class="container py-5">
+    <!-- Header Section -->
+    <div class="row mb-4">
+        <div class="col-md-12">
+            <h2 class="fw-bold text-danger">
+                <i class="fa-solid fa-triangle-exclamation me-2"></i>
+                {% if lang == 'bn' %}দুর্যোগ সতর্কতা, পূর্বাভাস ও জরুরি আশ্রয়কেন্দ্র{% else %}Disaster Alerts, Forecasting & Emergency Shelters{% endif %}
+            </h2>
+            <p class="text-muted">
+                {% if lang == 'bn' %}আকস্মিক বন্যা, ঘূর্ণিঝড় এবং প্রাকৃতিক দুর্যোগের রিয়েল-টাইম আপডেট এবং নিরাপদ আশ্রয়কেন্দ্রের তালিকা।{% else %}Real-time updates on flash floods, cyclones, and natural disasters with verified safe shelter locations.{% endif %}
+            </p>
+        </div>
+    </div>
+
+    <!-- Live Critical Alert Banner -->
+    <div class="alert alert-danger shadow-sm p-4 mb-5 border-start border-danger border-5 bg-white" role="alert">
+        <div class="d-flex align-items-center">
+            <div class="fs-1 text-danger me-3"><i class="fa-solid fa-bullhorn animate-pulse"></i></div>
+            <div>
+                <h4 class="alert-heading fw-bold text-danger">
+                    {% if lang == 'bn' %}⚠️ রেড অ্যালার্ট: সিলেট ও সুনামগঞ্জ অঞ্চলে মারাত্মক বন্যা পরিস্থিতি{% else %}⚠️ RED ALERT: Severe Flood Conditions in Sylhet & Sunamganj{% endif %}
+                </h4>
+                <p class="mb-1 text-dark">
+                    {% if lang == 'bn' %}সুরমা ও কুশিয়ারা নদীর পানি বিপদসীমার ৭২ সেন্টিমিটার উপর দিয়ে প্রবাহিত হচ্ছে। নিম্নাঞ্চলের সকল বাসিন্দাকে অবিলম্বে সরকারি আশ্রয়কেন্দ্রে চলে যাওয়ার নির্দেশ দেওয়া হয়েছে।{% else %}Surma and Kushiyara rivers are flowing 72cm above danger level. All residents in low-lying areas are strongly advised to evacuate to designated government shelters.{% endif %}
+                </p>
+                <small class="text-muted"><i class="fa-regular fa-clock me-1"></i>সর্বশেষ আপডেট: আজ সকাল ১০:৩০ মিনিটে হালনাগাদকৃত</small>
+            </div>
+        </div>
+    </div>
+
+    <!-- Filter & Search Bar -->
+    <div class="card shadow-sm border-0 mb-4 bg-light">
+        <div class="card-body">
+            <form class="row g-3">
+                <div class="col-md-4">
+                    <label class="form-label fw-bold">জেলা নির্বাচন করুন</label>
+                    <select class="form-select">
+                        <option selected>সকল জেলা</option>
+                        <option>সিলেট</option>
+                        <option>সুনামগঞ্জ</option>
+                        <option>কুড়িগ্রাম</option>
+                        <option>নোয়াখালী</option>
+                    </select>
+                </div>
+                <div class="col-md-4">
+                    <label class="form-label fw-bold">দুর্যোগের ধরণ</label>
+                    <select class="form-select">
+                        <option selected>সকল ধরণ</option>
+                        <option>বন্যা (Flood)</option>
+                        <option>ঘূর্ণিঝড় (Cyclone)</option>
+                        <option>নদী ভাঙন (River Erosion)</option>
+                    </select>
+                </div>
+                <div class="col-md-4 d-flex align-items-end">
+                    <button type="submit" class="btn btn-danger w-100 fw-bold shadow-sm">
+                        <i class="fa-solid fa-filter me-2"></i>সতর্কতা খুঁজুন
+                    </button>
+                </div>
+            </form>
+        </div>
+    </div>
+
+    <!-- Shelters List Section -->
+    <h3 class="fw-bold mb-4 text-dark"><i class="fa-solid fa-house-chimney-medical me-2 text-success"></i>নিরাপদ আশ্রয়কেন্দ্র ও ত্রাণ বিতরণ কেন্দ্র</h3>
+    <div class="row g-4">
+        <!-- Shelter 1 -->
+        <div class="col-md-6">
+            <div class="card shadow-sm border-0 h-100 hover-shadow transition">
+                <div class="card-body p-4">
+                    <div class="d-flex justify-content-between align-items-start mb-3">
+                        <h5 class="fw-bold text-success mb-0">সরকারি জুবিলী উচ্চ বিদ্যালয় আশ্রয়কেন্দ্র</h5>
+                        <span class="badge bg-success px-3 py-2">সক্রিয় (Open)</span>
+                    </div>
+                    <p class="text-muted mb-2"><i class="fa-solid fa-location-dot text-danger me-2"></i>জিন্দাবাজার রোড, সিলেট সদর, সিলেট</p>
+                    <p class="mb-1"><strong>সর্বমোট ধারণক্ষমতা:</strong> ১২০০ জন</p>
+                    <p class="mb-1"><strong>বর্তমান আশ্রয়গ্রহণকারী:</strong> ৮৫০ জন</p>
+                    <p class="mb-3"><strong>দায়زত্বপ্রাপ্ত কর্মকর্তা:</strong> জনাব মো. রফিকুল ইসলাম (০১৭০০০০০০০০)</p>
+                    <div class="d-flex gap-2">
+                        <button class="btn btn-outline-success btn-sm flex-fill fw-bold"><i class="fa-solid fa-directions me-1"></i>ম্যাপে দেখুন</button>
+                        <button class="btn btn-success btn-sm flex-fill fw-bold"><i class="fa-solid fa-phone me-1"></i>যোগাযোগ করুন</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!-- Shelter 2 -->
+        <div class="col-md-6">
+            <div class="card shadow-sm border-0 h-100 hover-shadow transition">
+                <div class="card-body p-4">
+                    <div class="d-flex justify-content-between align-items-start mb-3">
+                        <h5 class="fw-bold text-success mb-0">সুনামগঞ্জ সরকারি কলেজ সাইক্লোন শেল্টার</h5>
+                        <span class="badge bg-success px-3 py-2">সক্রিয় (Open)</span>
+                    </div>
+                    <p class="text-muted mb-2"><i class="fa-solid fa-location-dot text-danger me-2"></i>কলেজ রোড, সুনামগঞ্জ সদর</p>
+                    <p class="mb-1"><strong>সর্বমোট ধারণক্ষমতা:</strong> ১৫০০ জন</p>
+                    <p class="mb-1"><strong>বর্তমান আশ্রয়গ্রহণকারী:</strong> ১১২০ জন</p>
+                    <p class="mb-3"><strong>দায়িত্বরত কর্মকর্তা:</strong> ড. এনামুল হক (০১৮০০০০০০০০)</p>
+                    <div class="d-flex gap-2">
+                        <button class="btn btn-outline-success btn-sm flex-fill fw-bold"><i class="fa-solid fa-directions me-1"></i>ম্যাপে দেখুন</button>
+                        <button class="btn btn-success btn-sm flex-fill fw-bold"><i class="fa-solid fa-phone me-1"></i>যোগাযোগ করুন</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}

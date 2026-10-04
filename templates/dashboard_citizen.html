@@ -1,0 +1,82 @@
+{% extends 'base.html' %}
+{% block content %}
+<div class="container py-5">
+    <!-- User Profile Header -->
+    <div class="row mb-4">
+        <div class="col-md-12">
+            <div class="card shadow-sm border-0 bg-primary text-white p-4">
+                <div class="d-flex align-items-center">
+                    <div class="bg-white text-primary rounded-circle p-4 fw-bold display-6 me-4 shadow">
+                        <i class="fa-solid fa-user-tie"></i>
+                    </div>
+                    <div>
+                        <h2 class="fw-bold mb-1">স্বাগতম, জনাব আব্দুর রহিম</h2>
+                        <p class="mb-1 text-white-50"><i class="fa-solid fa-id-card me-2"></i>NID: 19985421098765432 | <i class="fa-solid fa-phone me-2"></i>01711223344</p>
+                        <span class="badge bg-success px-3 py-2 mt-2">যাচাইকৃত নাগরিক (Verified Citizen)</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Quick Stats Row -->
+    <div class="row g-4 mb-5">
+        <div class="col-md-4">
+            <div class="card shadow-sm border-0 p-3 text-center border-start border-primary border-5">
+                <h6 class="text-muted mb-1">মোট আবেদন</h6>
+                <h3 class="fw-bold text-primary mb-0">০২ টি</h3>
+            </div>
+        </div>
+        <div class="col-md-4">
+            <div class="card shadow-sm border-0 p-3 text-center border-start border-success border-5">
+                <h6 class="text-muted mb-1">অনুমোদিত সহায়তা</h6>
+                <h3 class="fw-bold text-success mb-0">০১ টি</h3>
+            </div>
+        </div>
+        <div class="col-md-4">
+            <div class="card shadow-sm border-0 p-3 text-center border-start border-warning border-5">
+                <h6 class="text-muted mb-1">চলমান নোটিফিকেশন</h6>
+                <h3 class="fw-bold text-warning mb-0">০৩ টি</h3>
+            </div>
+        </div>
+    </div>
+
+    <!-- Application History Section -->
+    <div class="row">
+        <div class="col-md-12">
+            <div class="card shadow-sm border-0 p-4">
+                <h4 class="fw-bold mb-4 text-dark"><i class="fa-solid fa-clock-rotate-left me-2 text-primary"></i>আবেদনের ইতিহাস ও বর্তমান অবস্থা</h4>
+                <div class="table-responsive">
+                    <table class="table table-hover align-middle">
+                        <thead class="table-light">
+                            <tr>
+                                <th>আবেদনের আইডি</th>
+                                <th>সেবার নাম</th>
+                                <th>তারিখ</th>
+                                <th>স্ট্যাটাস</th>
+                                <th>কার্যক্রম</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td class="fw-bold">#APP-2026-891</td>
+                                <td>দুর্যোগ ত্রাণ ও আর্থিক সহায়তা (Flood Relief)</td>
+                                <td>২৬ মে, ২০২৬</td>
+                                <td><span class="badge bg-warning text-dark px-3 py-2">যাচাইাধীন (Pending)</span></td>
+                                <td><button class="btn btn-outline-primary btn-sm fw-bold">বিস্তারিত</button></td>
+                            </tr>
+                            <tr>
+                                <td class="fw-bold">#APP-2026-412</td>
+                                <td>বয়স্ক ভাতা আবেদন (Old Age Allowance)</td>
+                                <td>১০ মার্চ, ২০২৬</td>
+                                <td><span class="badge bg-success px-3 py-2">অনুমোদিত (Approved)</span></td>
+                                <td><button class="btn btn-outline-success btn-sm fw-bold">রিসীট ডাউনলোড</button></td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}

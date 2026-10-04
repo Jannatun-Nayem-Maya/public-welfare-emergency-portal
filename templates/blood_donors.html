@@ -1,0 +1,105 @@
+{% extends 'base.html' %}
+{% block content %}
+<div class="container py-5">
+    <!-- Header Section -->
+    <div class="row mb-4">
+        <div class="col-md-12">
+            <h2 class="fw-bold text-danger">
+                <i class="fa-solid fa-droplet me-2"></i>
+                {% if lang == 'bn' %}জরুরি রক্তদান ও রক্তদাতা সন্ধান পোর্টাল{% else %}Blood Donation & Emergency Donor Finder Portal{% endif %}
+            </h2>
+            <p class="text-muted">
+                {% if lang == 'bn' %}জরুরি মুহূর্তে রক্তের প্রয়োজন মেটাতে দেশের যেকোনো প্রান্ত থেকে ভেরিফাইড রক্তদাতা খুঁজুন অথবা নিজে রক্তদাতা হিসেবে নিবন্ধন করুন।{% else %}Find verified blood donors across the country or register yourself as a donor for emergency medical needs.{% endif %}
+            </p>
+        </div>
+    </div>
+
+    <!-- Search / Filter Card -->
+    <div class="card shadow-sm border-0 mb-5 bg-light">
+        <div class="card-body p-4">
+            <h5 class="fw-bold mb-3 text-dark"><i class="fa-solid fa-magnifying-glass me-2"></i>রক্তদাতা খুঁজুন (Search Donors)</h5>
+            <form class="row g-3">
+                <div class="col-md-4">
+                    <label class="form-label fw-bold">রক্তের গ্রুপ নির্বাচন করুন</label>
+                    <select class="form-select" required>
+                        <option selected disabled>গ্রুপ বেছে নিন</option>
+                        <option>A+</option>
+                        <option>A-</option>
+                        <option>B+</option>
+                        <option>B-</option>
+                        <option>O+</option>
+                        <option>O-</option>
+                        <option>AB+</option>
+                        <option>AB-</option>
+                    </select>
+                </div>
+                <div class="col-md-4">
+                    <label class="form-label fw-bold">জেলা / এলাকা</label>
+                    <input type="text" class="form-control" placeholder="যেমন: ঢাকা, সিলেট, সাভার">
+                </div>
+                <div class="col-md-4 d-flex align-items-end">
+                    <button type="submit" class="btn btn-danger w-100 fw-bold shadow-sm py-2">
+                        <i class="fa-solid fa-search me-2"></i>রক্তদাতা অনুসন্ধান করুন
+                    </button>
+                </div>
+            </form>
+        </div>
+    </div>
+
+    <!-- Donors List Grid -->
+    <h3 class="fw-bold mb-4 text-dark"><i class="fa-solid fa-users me-2 text-success"></i>উপলব্ধ রক্তদাতাগণ</h3>
+    <div class="row g-4">
+        <!-- Donor 1 -->
+        <div class="col-md-4">
+            <div class="card shadow-sm border-0 h-100 hover-shadow transition">
+                <div class="card-body p-4 d-flex flex-column justify-content-between">
+                    <div>
+                        <div class="d-flex justify-content-between align-items-center mb-3">
+                            <h5 class="fw-bold text-dark mb-0">মো. তানভীর আহমেদ</h5>
+                            <span class="badge bg-danger fs-6 px-3 py-2">A+</span>
+                        </div>
+                        <p class="text-muted small mb-2"><i class="fa-solid fa-location-dot text-danger me-2"></i>জিন্দাবাজার, সিলেট সদর</p>
+                        <p class="text-muted small mb-3"><i class="fa-regular fa-clock text-success me-2"></i>শেষ রক্তদান: ৩ মাস পূর্বে</p>
+                        <span class="badge bg-success bg-opacity-10 text-success fw-bold px-2 py-1 mb-3">স্ট্যাটাস: ডোনেশনের জন্য প্রস্তুত</span>
+                    </div>
+                    <button class="btn btn-outline-danger w-100 fw-bold"><i class="fa-solid fa-phone me-2"></i>যোগাযোগ করুন</button>
+                </div>
+            </div>
+        </div>
+        <!-- Donor 2 -->
+        <div class="col-md-4">
+            <div class="card shadow-sm border-0 h-100 hover-shadow transition">
+                <div class="card-body p-4 d-flex flex-column justify-content-between">
+                    <div>
+                        <div class="d-flex justify-content-between align-items-center mb-3">
+                            <h5 class="fw-bold text-dark mb-0">ফাতিমা আক্তার</h5>
+                            <span class="badge bg-danger fs-6 px-3 py-2">O+</span>
+                        </div>
+                        <p class="text-muted small mb-2"><i class="fa-solid fa-location-dot text-danger me-2"></i>ধানমন্ডি, ঢাকা</p>
+                        <p class="text-muted small mb-3"><i class="fa-regular fa-clock text-success me-2"></i>শেষ রক্তদান: ৫ মাস পূর্বে</p>
+                        <span class="badge bg-success bg-opacity-10 text-success fw-bold px-2 py-1 mb-3">স্ট্যাটাস: ডোনেশনের জন্য প্রস্তুত</span>
+                    </div>
+                    <button class="btn btn-outline-danger w-100 fw-bold"><i class="fa-solid fa-phone me-2"></i>যোগাযোগ করুন</button>
+                </div>
+            </div>
+        </div>
+        <!-- Donor 3 -->
+        <div class="col-md-4">
+            <div class="card shadow-sm border-0 h-100 hover-shadow transition">
+                <div class="card-body p-4 d-flex flex-column justify-content-between">
+                    <div>
+                        <div class="d-flex justify-content-between align-items-center mb-3">
+                            <h5 class="fw-bold text-dark mb-0">সাব্বির রহমান</h5>
+                            <span class="badge bg-danger fs-6 px-3 py-2">B+</span>
+                        </div>
+                        <p class="text-muted small mb-2"><i class="fa-solid fa-location-dot text-danger me-2"></i>সুনামগঞ্জ সদর</p>
+                        <p class="text-muted small mb-3"><i class="fa-regular fa-clock text-success me-2"></i>শেষ রক্তদান: ৪ মাস পূর্বে</p>
+                        <span class="badge bg-success bg-opacity-10 text-success fw-bold px-2 py-1 mb-3">স্ট্যাটাস: ডোনেশনের জন্য প্রস্তুত</span>
+                    </div>
+                    <button class="btn btn-outline-danger w-100 fw-bold"><i class="fa-solid fa-phone me-2"></i>যোগাযোগ করুন</button>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}

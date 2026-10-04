@@ -1,57 +1,584 @@
 {% extends "base.html" %}
 
 {% block content %}
-<div class="container my-4">
-    <h3 class="fw-bold mb-4 text-success">
-        <i class="fa-solid fa-cubes me-2"></i>
-        {% if lang == 'bn' %}ডিজিটাল নাগরিক সেবা ডিরেক্টরি{% else %}Digital Citizen Services Directory{% endif %}
-    </h3>
+
+<div class="container py-5">
+
+    <!-- PAGE TITLE -->
+
+    <div class="text-center mb-5">
+
+        <h1 class="fw-bold text-primary">
+
+            {% if lang == 'bn' %}
+                নাগরিক সেবা ডিরেক্টরি
+            {% else %}
+                Digital Citizen Services Directory
+            {% endif %}
+
+        </h1>
+
+        <p class="text-muted">
+
+            {% if lang == 'bn' %}
+
+                জনসেবা পোর্টালের মাধ্যমে আপনার প্রয়োজনীয় সরকারি সেবা গ্রহণ করুন।
+
+            {% else %}
+
+                Access essential digital government services easily through Jonoseba Portal.
+
+            {% endif %}
+
+        </p>
+
+    </div>
+
 
     <div class="row g-4">
-        <div class="col-md-4">
-            <div class="card border-0 shadow-sm rounded-4 text-center p-3">
-                <i class="fa-solid fa-id-card display-4 text-success my-3"></i>
-                <h5 class="fw-bold">
-                    {% if lang == 'bn' %}এনআইডি ও স্মার্ট কার্ড{% else %}NID & Smart Card{% endif %}
-                </h5>
-                <p class="text-muted small">
-                    {% if lang == 'bn' %}অনলাইনে জাতীয় পরিচয়পত্র তথ্য সংশোধন ও নতুন আবেদন।{% else %}Online NID correction and new card application.{% endif %}
-                </p>
-                <a href="https://services.nidw.gov.bd" target="_blank" class="btn btn-outline-success btn-sm rounded-pill">
-                    {% if lang == 'bn' %}সেবা নিন{% else %}Open Service{% endif %}
-                </a>
-            </div>
-        </div>
+
+
+        <!-- ================================================= -->
+        <!-- NID -->
+        <!-- ================================================= -->
 
         <div class="col-md-4">
-            <div class="card border-0 shadow-sm rounded-4 text-center p-3">
-                <i class="fa-solid fa-passport display-4 text-primary my-3"></i>
-                <h5 class="fw-bold">
-                    {% if lang == 'bn' %}ই-পাসপোর্ট সেবা{% else %}E-Passport Portal{% endif %}
-                </h5>
-                <p class="text-muted small">
-                    {% if lang == 'bn' %}অনলাইনে ই-পাসপোর্ট আবেদন ও স্ট্যাটাস ট্র্যাকিং।{% else %}Online E-Passport application and status check.{% endif %}
-                </p>
-                <a href="https://www.epassport.gov.bd" target="_blank" class="btn btn-outline-primary btn-sm rounded-pill">
-                    {% if lang == 'bn' %}সেবা নিন{% else %}Open Service{% endif %}
-                </a>
+
+            <div class="card h-100 shadow-sm border-0">
+
+                <div class="card-body text-center p-4">
+
+                    <div class="mb-3 text-primary fs-1">
+
+                        <i class="fa-solid fa-id-card"></i>
+
+                    </div>
+
+                    <h4 class="card-title fw-bold">
+
+                        {% if lang == 'bn' %}
+                            জাতীয় পরিচয়পত্র (NID)
+                        {% else %}
+                            National ID (NID)
+                        {% endif %}
+
+                    </h4>
+
+                    <p class="card-text text-muted">
+
+                        {% if lang == 'bn' %}
+
+                            নতুন এনআইডি আবেদন, তথ্য সংশোধন এবং ডাউনলোড সেবা।
+
+                        {% else %}
+
+                            New NID application, data correction, and download services.
+
+                        {% endif %}
+
+                    </p>
+
+
+                    <a href="{{ url_for('service_apply', service_name='nid') }}"
+                       class="btn btn-outline-primary rounded-pill px-4">
+
+                        {% if lang == 'bn' %}
+                            সেবা নিন
+                        {% else %}
+                            Access Service
+                        {% endif %}
+
+                    </a>
+
+                </div>
+
             </div>
+
         </div>
 
+
+
+        <!-- ================================================= -->
+        <!-- E PASSPORT -->
+        <!-- ================================================= -->
+
         <div class="col-md-4">
-            <div class="card border-0 shadow-sm rounded-4 text-center p-3">
-                <i class="fa-solid fa-certificate display-4 text-warning my-3"></i>
-                <h5 class="fw-bold">
-                    {% if lang == 'bn' %}জন্ম সনদ নিবন্ধণ{% else %}Birth Certificate{% endif %}
-                </h5>
-                <p class="text-muted small">
-                    {% if lang == 'bn' %}অনলাইন জন্ম ও মৃত্যু সনদ আবেদন এবং সত্যতা যাচাই।{% else %}Online birth certificate registration & verification.{% endif %}
-                </p>
-                <a href="https://bdris.gov.bd" target="_blank" class="btn btn-outline-warning btn-sm rounded-pill">
-                    {% if lang == 'bn' %}সেবা নিন{% else %}Open Service{% endif %}
-                </a>
+
+            <div class="card h-100 shadow-sm border-0">
+
+                <div class="card-body text-center p-4">
+
+                    <div class="mb-3 text-primary fs-1">
+
+                        <i class="fa-solid fa-passport"></i>
+
+                    </div>
+
+                    <h4 class="card-title fw-bold">
+
+                        {% if lang == 'bn' %}
+                            ই-পাসপোর্ট সেবা
+                        {% else %}
+                            E-Passport Services
+                        {% endif %}
+
+                    </h4>
+
+                    <p class="card-text text-muted">
+
+                        {% if lang == 'bn' %}
+
+                            অনলাইন পাসপোর্ট আবেদন, ফি প্রদান ও স্ট্যাটাস চেক করুন।
+
+                        {% else %}
+
+                            Online passport application, fee payment, and status checking.
+
+                        {% endif %}
+
+                    </p>
+
+
+                    <a href="{{ url_for('service_apply', service_name='passport') }}"
+                       class="btn btn-outline-primary rounded-pill px-4">
+
+                        {% if lang == 'bn' %}
+                            সেবা নিন
+                        {% else %}
+                            Access Service
+                        {% endif %}
+
+                    </a>
+
+                </div>
+
             </div>
+
         </div>
+
+
+
+        <!-- ================================================= -->
+        <!-- BIRTH CERTIFICATE -->
+        <!-- ================================================= -->
+
+        <div class="col-md-4">
+
+            <div class="card h-100 shadow-sm border-0">
+
+                <div class="card-body text-center p-4">
+
+                    <div class="mb-3 text-primary fs-1">
+
+                        <i class="fa-solid fa-baby"></i>
+
+                    </div>
+
+                    <h4 class="card-title fw-bold">
+
+                        {% if lang == 'bn' %}
+                            জন্ম নিবন্ধন
+                        {% else %}
+                            Birth Certificate
+                        {% endif %}
+
+                    </h4>
+
+                    <p class="card-text text-muted">
+
+                        {% if lang == 'bn' %}
+
+                            নতুন জন্ম নিবন্ধন আবেদন ও অনলাইন সনদ যাচাইকরণ।
+
+                        {% else %}
+
+                            New birth registration application and online certificate verification.
+
+                        {% endif %}
+
+                    </p>
+
+
+                    <a href="{{ url_for('service_apply', service_name='birth') }}"
+                       class="btn btn-outline-primary rounded-pill px-4">
+
+                        {% if lang == 'bn' %}
+                            সেবা নিন
+                        {% else %}
+                            Access Service
+                        {% endif %}
+
+                    </a>
+
+                </div>
+
+            </div>
+
+        </div>
+
+
+
+        <!-- ================================================= -->
+        <!-- RELIEF -->
+        <!-- ================================================= -->
+
+        <div class="col-md-4">
+
+            <div class="card h-100 shadow-sm border-0">
+
+                <div class="card-body text-center p-4">
+
+                    <div class="mb-3 text-primary fs-1">
+
+                        <i class="fa-solid fa-hands-holding-child"></i>
+
+                    </div>
+
+                    <h4 class="card-title fw-bold">
+
+                        {% if lang == 'bn' %}
+                            ত্রাণ সহায়তা
+                        {% else %}
+                            Relief Aid
+                        {% endif %}
+
+                    </h4>
+
+                    <p class="card-text text-muted">
+
+                        {% if lang == 'bn' %}
+
+                            দুর্যোগপীড়িত এলাকার জন্য ত্রাণ সহায়তার আবেদন।
+
+                        {% else %}
+
+                            Relief aid application for disaster affected people.
+
+                        {% endif %}
+
+                    </p>
+
+
+                    <a href="{{ url_for('relief_apply') }}"
+                       class="btn btn-outline-primary rounded-pill px-4">
+
+                        {% if lang == 'bn' %}
+                            আবেদন করুন
+                        {% else %}
+                            Apply Now
+                        {% endif %}
+
+                    </a>
+
+                </div>
+
+            </div>
+
+        </div>
+
+
+
+        <!-- ================================================= -->
+        <!-- BLOOD -->
+        <!-- ================================================= -->
+
+        <div class="col-md-4">
+
+            <div class="card h-100 shadow-sm border-0">
+
+                <div class="card-body text-center p-4">
+
+                    <div class="mb-3 text-primary fs-1">
+
+                        <i class="fa-solid fa-droplet"></i>
+
+                    </div>
+
+                    <h4 class="card-title fw-bold">
+
+                        {% if lang == 'bn' %}
+                            রক্তদাতা ও রক্তের অনুরোধ
+                        {% else %}
+                            Blood Donation
+                        {% endif %}
+
+                    </h4>
+
+                    <p class="card-text text-muted">
+
+                        {% if lang == 'bn' %}
+
+                            জরুরি রক্তের প্রয়োজনে রক্তদাতা খুঁজুন এবং রক্তের অনুরোধ পোস্ট করুন।
+
+                        {% else %}
+
+                            Find blood donors and post blood requests for emergencies.
+
+                        {% endif %}
+
+                    </p>
+
+
+                    <a href="{{ url_for('health') }}"
+                       class="btn btn-outline-primary rounded-pill px-4">
+
+                        {% if lang == 'bn' %}
+                            দেখুন
+                        {% else %}
+                            Explore
+                        {% endif %}
+
+                    </a>
+
+                </div>
+
+            </div>
+
+        </div>
+
+
+
+        <!-- ================================================= -->
+        <!-- DISASTER -->
+        <!-- ================================================= -->
+
+        <div class="col-md-4">
+
+            <div class="card h-100 shadow-sm border-0">
+
+                <div class="card-body text-center p-4">
+
+                    <div class="mb-3 text-primary fs-1">
+
+                        <i class="fa-solid fa-triangle-exclamation"></i>
+
+                    </div>
+
+                    <h4 class="card-title fw-bold">
+
+                        {% if lang == 'bn' %}
+                            দুর্যোগ সতর্কতা
+                        {% else %}
+                            Disaster Alerts
+                        {% endif %}
+
+                    </h4>
+
+                    <p class="card-text text-muted">
+
+                        {% if lang == 'bn' %}
+
+                            আবহাওয়া ও বিভিন্ন প্রাকৃতিক দুর্যোগের আগাম সতর্কতা জানুন।
+
+                        {% else %}
+
+                            Get early warnings about weather and natural disasters.
+
+                        {% endif %}
+
+                    </p>
+
+
+                    <a href="{{ url_for('disaster_alerts') }}"
+                       class="btn btn-outline-primary rounded-pill px-4">
+
+                        {% if lang == 'bn' %}
+                            বিস্তারিত
+                        {% else %}
+                            View Alerts
+                        {% endif %}
+
+                    </a>
+
+                </div>
+
+            </div>
+
+        </div>
+
+
+
+        <!-- ================================================= -->
+        <!-- WELFARE -->
+        <!-- ================================================= -->
+
+        <div class="col-md-4">
+
+            <div class="card h-100 shadow-sm border-0">
+
+                <div class="card-body text-center p-4">
+
+                    <div class="mb-3 text-primary fs-1">
+
+                        <i class="fa-solid fa-people-group"></i>
+
+                    </div>
+
+                    <h4 class="card-title fw-bold">
+
+                        {% if lang == 'bn' %}
+                            কল্যাণ কর্মসূচি
+                        {% else %}
+                            Welfare Programs
+                        {% endif %}
+
+                    </h4>
+
+                    <p class="card-text text-muted">
+
+                        {% if lang == 'bn' %}
+
+                            বিভিন্ন সামাজিক কল্যাণ কর্মসূচিতে আবেদন করুন।
+
+                        {% else %}
+
+                            Apply for different social welfare programs.
+
+                        {% endif %}
+
+                    </p>
+
+
+                    <a href="{{ url_for('service_apply', service_name='welfare') }}"
+                       class="btn btn-outline-primary rounded-pill px-4">
+
+                        {% if lang == 'bn' %}
+                            আবেদন করুন
+                        {% else %}
+                            Apply Now
+                        {% endif %}
+
+                    </a>
+
+                </div>
+
+            </div>
+
+        </div>
+
+
+
+        <!-- ================================================= -->
+        <!-- EMERGENCY CONTACT -->
+        <!-- ================================================= -->
+
+        <div class="col-md-4">
+
+            <div class="card h-100 shadow-sm border-0">
+
+                <div class="card-body text-center p-4">
+
+                    <div class="mb-3 text-primary fs-1">
+
+                        <i class="fa-solid fa-phone-volume"></i>
+
+                    </div>
+
+                    <h4 class="card-title fw-bold">
+
+                        {% if lang == 'bn' %}
+                            জরুরি যোগাযোগ
+                        {% else %}
+                            Emergency Contacts
+                        {% endif %}
+
+                    </h4>
+
+                    <p class="card-text text-muted">
+
+                        {% if lang == 'bn' %}
+
+                            জরুরি প্রয়োজনে গুরুত্বপূর্ণ নম্বরগুলো খুঁজে নিন।
+
+                        {% else %}
+
+                            Find important emergency contact numbers.
+
+                        {% endif %}
+
+                    </p>
+
+
+                    <a href="{{ url_for('emergency_contacts') }}"
+                       class="btn btn-outline-primary rounded-pill px-4">
+
+                        {% if lang == 'bn' %}
+                            দেখুন
+                        {% else %}
+                            View
+                        {% endif %}
+
+                    </a>
+
+                </div>
+
+            </div>
+
+        </div>
+
+
+
+        <!-- ================================================= -->
+        <!-- VOLUNTEER -->
+        <!-- ================================================= -->
+
+        <div class="col-md-4">
+
+            <div class="card h-100 shadow-sm border-0">
+
+                <div class="card-body text-center p-4">
+
+                    <div class="mb-3 text-primary fs-1">
+
+                        <i class="fa-solid fa-hand-holding-heart"></i>
+
+                    </div>
+
+                    <h4 class="card-title fw-bold">
+
+                        {% if lang == 'bn' %}
+                            স্বেচ্ছাসেবক
+                        {% else %}
+                            Volunteer
+                        {% endif %}
+
+                    </h4>
+
+                    <p class="card-text text-muted">
+
+                        {% if lang == 'bn' %}
+
+                            জনসেবামূলক কাজে স্বেচ্ছাসেবক হিসেবে যুক্ত হন।
+
+                        {% else %}
+
+                            Join community service activities as a volunteer.
+
+                        {% endif %}
+
+                    </p>
+
+
+                    <a href="{{ url_for('volunteer') }}"
+                       class="btn btn-outline-primary rounded-pill px-4">
+
+                        {% if lang == 'bn' %}
+                            দেখুন
+                        {% else %}
+                            Explore
+                        {% endif %}
+
+                    </a>
+
+                </div>
+
+            </div>
+
+        </div>
+
+
     </div>
+
 </div>
+
 {% endblock %}

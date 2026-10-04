@@ -1,0 +1,100 @@
+{% extends 'base.html' %}
+{% block content %}
+<div class="container py-5">
+    <!-- Header -->
+    <div class="row mb-4">
+        <div class="col-md-12">
+            <h2 class="fw-bold text-success">
+                <i class="fa-solid fa-hand-holding-heart me-2"></i>
+                {% if lang == 'bn' %}সরকারি সামাজিক নিরাপত্তা কর্মসূচি ও মাসিক ভাতাসমূহ{% else %}Government Social Welfare Programs & Allowances{% endif %}
+            </h2>
+            <p class="text-muted">
+                {% if lang == 'bn' %}বয়স্ক ভাতা, বিধবা ভাতা, অসচ্ছল প্রতিবন্ধী ভাতা এবং দুস্থদের জন্য সরকারের সামাজিক নিরাপত্তা বেষ্টনী কর্মসূচির বিস্তারিত বিবরণ।{% else %}Comprehensive details on social safety net allowances including old-age, widow, and disability grants.{% endif %}
+            </p>
+        </div>
+    </div>
+
+    <!-- Statistics Banner -->
+    <div class="row g-4 mb-5 text-center">
+        <div class="col-md-4">
+            <div class="card bg-success text-white shadow-sm border-0 p-3">
+                <h3 class="fw-bold display-6">৫৮ লক্ষ+</h3>
+                <p class="mb-0">মোট বয়স্ক ভাতাভোগী</p>
+            </div>
+        </div>
+        <div class="col-md-4">
+            <div class="card bg-primary text-white shadow-sm border-0 p-3">
+                <h3 class="fw-bold display-6">২৫ লক্ষ+</h3>
+                <p class="mb-0">বিধবা ও স্বামী নিগৃহীতা ভাতাভোগী</p>
+            </div>
+        </div>
+        <div class="col-md-4">
+            <div class="card bg-dark text-white shadow-sm border-0 p-3">
+                <h3 class="fw-bold display-6">২৩ লক্ষ+</h3>
+                <p class="mb-0">প্রতিবন্ধী শিক্ষা ও মাসিক ভাতা</p>
+            </div>
+        </div>
+    </div>
+
+    <!-- Programs Grid -->
+    <h3 class="fw-bold mb-4 text-dark"><i class="fa-solid fa-list-check me-2 text-success"></i>বর্তমান চলমান কর্মসূচি তালিকা</h3>
+    <div class="row g-4">
+        <!-- Program 1 -->
+        <div class="col-md-4">
+            <div class="card shadow-sm border-0 h-100 hover-shadow transition">
+                <div class="card-body p-4 d-flex flex-column justify-content-between">
+                    <div>
+                        <div class="badge bg-success bg-opacity-10 text-success fw-bold px-3 py-2 mb-3">বয়স্ক ভাতা কর্মসূচি</div>
+                        <h4 class="fw-bold text-dark mb-3">বয়স্ক ভাতা (Old Age Allowance)</h4>
+                        <p class="text-muted small">সমাজকল্যাণ মন্ত্রণালয়ের আওতাধীন গ্রামীণ ও শহরের প্রান্তিক প্রবীণ নাগরিকদের জীবনমান উন্নয়নে আর্থিক সহায়তা।</p>
+                        <ul class="list-unstyled small mb-4">
+                            <li><i class="fa-solid fa-check text-success me-2"></i><strong>যোগ্যতা:</strong> পুরুষ বয়স ন্যূনতম ৬০, নারী ৫৫ বছর</li>
+                            <li><i class="fa-solid fa-check text-success me-2"></i><strong>মাসিক অনুদান:</strong> ৬০০ টাকা</li>
+                            <li><i class="fa-solid fa-check text-success me-2"></i><strong>বার্ষিক বরাদ্দ:</strong> ৭,২০০ টাকা</li>
+                        </ul>
+                    </div>
+                    <a href="/login" class="btn btn-outline-success w-100 fw-bold"><i class="fa-solid fa-file-pen me-2"></i>অনলাইনে আবেদন করুন</a>
+                </div>
+            </div>
+        </div>
+
+        <!-- Program 2 -->
+        <div class="col-md-4">
+            <div class="card shadow-sm border-0 h-100 hover-shadow transition">
+                <div class="card-body p-4 d-flex flex-column justify-content-between">
+                    <div>
+                        <div class="badge bg-primary bg-opacity-10 text-primary fw-bold px-3 py-2 mb-3">বিধবা ভাতা</div>
+                        <h4 class="fw-bold text-dark mb-3">বিধবা ও স্বামী নিগৃহীতা ভাতা</h4>
+                        <p class="text-muted small">মহিলা ও শিশু বিষয়ক মন্ত্রণালয় কর্তৃক পরিচালিত দুস্থ, অসহায় এবং স্বামী পরিত্যক্তা নারীদের জন্য সামাজিক সুরক্ষা।</p>
+                        <ul class="list-unstyled small mb-4">
+                            <li><i class="fa-solid fa-check text-primary me-2"></i><strong>যোগ্যতা:</strong> বিধবা বা স্বামী পরিত্যক্তা নারী</li>
+                            <li><i class="fa-solid fa-check text-primary me-2"></i><strong>মাসিক অনুদান:</strong> ৫০০ টাকা</li>
+                            <li><i class="fa-solid fa-check text-primary me-2"></i><strong>বার্ষিক বরাদ্দ:</strong> ৬,০০০ টাকা</li>
+                        </ul>
+                    </div>
+                    <a href="/login" class="btn btn-outline-primary w-100 fw-bold"><i class="fa-solid fa-file-pen me-2"></i>অনলাইনে আবেদন করুন</a>
+                </div>
+            </div>
+        </div>
+
+        <!-- Program 3 -->
+        <div class="col-md-4">
+            <div class="card shadow-sm border-0 h-100 hover-shadow transition">
+                <div class="card-body p-4 d-flex flex-column justify-content-between">
+                    <div>
+                        <div class="badge bg-warning bg-opacity-10 text-dark fw-bold px-3 py-2 mb-3">প্রতিবন্ধী ভাতা</div>
+                        <h4 class="fw-bold text-dark mb-3">অসচ্ছল প্রতিবন্ধী ভাতা</h4>
+                        <p class="text-muted small">সমাজসেবা অধিদপ্তর কর্তৃক নিবন্ধিত শারীরিক, মানসিক ও দৃষ্টিপ্রতিবন্ধী ব্যক্তিদের পুনর্বাসন ও বিশেষ ভাতা প্রদান।</p>
+                        <ul class="list-unstyled small mb-4">
+                            <li><i class="fa-solid fa-check text-warning me-2"></i><strong>যোগ্যতা:</strong> সমাজসেবা নিবন্ধিত প্রতিবন্ধী</li>
+                            <li><i class="fa-solid fa-check text-warning me-2"></i><strong>মাসিক অনুদান:</strong> ৮৫০ টাকা</li>
+                            <li><i class="fa-solid fa-check text-warning me-2"></i><strong>বার্ষিক বরাদ্দ:</strong> ১০,২০০ টাকা</li>
+                        </ul>
+                    </div>
+                    <a href="/login" class="btn btn-outline-dark w-100 fw-bold"><i class="fa-solid fa-file-pen me-2"></i>অনলাইনে আবেদন করুন</a>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}

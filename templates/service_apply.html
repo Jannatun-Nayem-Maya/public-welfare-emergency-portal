@@ -3,98 +3,69 @@
 {% block content %}
 
 <div class="container py-5">
-
     <div class="row justify-content-center">
-
         <div class="col-md-8 col-lg-7">
-
             <div class="card shadow-sm border-0 rounded-4">
-
                 <div class="card-body p-5">
 
-
                     <!-- TITLE -->
-
                     <div class="text-center mb-4">
-
                         <i class="fa-solid fa-file-circle-check text-primary"
                            style="font-size: 55px;">
                         </i>
 
                         <h2 class="fw-bold text-primary mt-3">
-
                             {% if service_name == 'nid' %}
-
                                 {% if lang == 'bn' %}
                                     NID সেবা আবেদন
                                 {% else %}
                                     NID Service Application
                                 {% endif %}
 
-
                             {% elif service_name == 'passport' %}
-
                                 {% if lang == 'bn' %}
                                     ই-পাসপোর্ট আবেদন
                                 {% else %}
                                     E-Passport Application
                                 {% endif %}
 
-
                             {% elif service_name == 'birth' %}
-
                                 {% if lang == 'bn' %}
                                     জন্ম নিবন্ধন আবেদন
                                 {% else %}
                                     Birth Certificate Application
                                 {% endif %}
 
-
                             {% elif service_name == 'welfare' %}
-
                                 {% if lang == 'bn' %}
                                     কল্যাণ কর্মসূচি আবেদন
                                 {% else %}
                                     Welfare Program Application
                                 {% endif %}
-
                             {% endif %}
-
                         </h2>
 
                         <p class="text-muted">
-
                             {% if lang == 'bn' %}
                                 নিচের তথ্যগুলো পূরণ করুন
                             {% else %}
                                 Please provide the required information
                             {% endif %}
-
                         </p>
-
                     </div>
 
-
-
                     <!-- APPLICATION FORM -->
-
                     <form method="POST">
 
-
                         <!-- FULL NAME -->
-
                         <div class="mb-3">
-
                             <label class="form-label fw-semibold">
-
                                 {% if lang == 'bn' %}
                                     পূর্ণ নাম
                                 {% else %}
                                     Full Name
                                 {% endif %}
-
                             </label>
-
                             <input
                                 type="text"
                                 name="full_name"
@@ -102,51 +73,17 @@
                                 value="{{ current_user.name }}"
                                 required
                             >
-
                         </div>
-
-
-
-                        <!-- NID -->
-
-                        <div class="mb-3">
-
-                            <label class="form-label fw-semibold">
-
-                                {% if lang == 'bn' %}
-                                    NID নম্বর
-                                {% else %}
-                                    NID Number
-                                {% endif %}
-
-                            </label>
-
-                            <input
-                                type="text"
-                                name="nid"
-                                class="form-control"
-                                placeholder="Enter NID number"
-                                required
-                            >
-
-                        </div>
-
-
 
                         <!-- PHONE -->
-
                         <div class="mb-3">
-
                             <label class="form-label fw-semibold">
-
                                 {% if lang == 'bn' %}
                                     মোবাইল নম্বর
                                 {% else %}
                                     Phone Number
                                 {% endif %}
-
                             </label>
-
                             <input
                                 type="tel"
                                 name="phone"
@@ -154,85 +91,57 @@
                                 value="{{ current_user.phone or '' }}"
                                 required
                             >
-
                         </div>
 
-
-
                         <!-- ADDRESS -->
-
                         <div class="mb-3">
-
                             <label class="form-label fw-semibold">
-
                                 {% if lang == 'bn' %}
                                     ঠিকানা
                                 {% else %}
                                     Address
                                 {% endif %}
-
                             </label>
-
                             <textarea
                                 name="address"
                                 class="form-control"
                                 rows="3"
                                 required></textarea>
-
                         </div>
 
-
-
                         <!-- DETAILS -->
-
                         <div class="mb-4">
-
                             <label class="form-label fw-semibold">
-
                                 {% if lang == 'bn' %}
                                     অতিরিক্ত তথ্য
                                 {% else %}
                                     Additional Information
                                 {% endif %}
-
                             </label>
-
                             <textarea
                                 name="details"
                                 class="form-control"
                                 rows="4"></textarea>
-
                         </div>
 
-
-
                         <!-- SUBMIT -->
-
                         <button
                             type="submit"
                             class="btn btn-primary btn-lg w-100 rounded-pill fw-bold">
-
                             <i class="fa-solid fa-paper-plane me-2"></i>
-
                             {% if lang == 'bn' %}
                                 আবেদন জমা দিন
                             {% else %}
                                 Submit Application
                             {% endif %}
-
                         </button>
-
 
                     </form>
 
                 </div>
-
             </div>
-
         </div>
-
     </div>
-
 </div>
 
 {% endblock %}

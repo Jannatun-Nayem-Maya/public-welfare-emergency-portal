@@ -2,27 +2,56 @@
 {% block content %}
 <div class="container py-5">
     <!-- Header Section -->
-    <div class="row mb-4">
-        <div class="col-md-12">
-            <h2 class="fw-bold text-danger">
+    <div class="row mb-5 text-center text-md-start align-items-center">
+        <div class="col-md-8">
+            <h2 class="fw-bold text-danger display-6 mb-3">
                 <i class="fa-solid fa-droplet me-2"></i>
                 {% if lang == 'bn' %}জরুরি রক্তদান ও রক্তদাতা সন্ধান পোর্টাল{% else %}Blood Donation & Emergency Donor Finder Portal{% endif %}
             </h2>
-            <p class="text-muted">
-                {% if lang == 'bn' %}জরুরি মুহূর্তে রক্তের প্রয়োজন মেটাতে দেশের যেকোনো প্রান্ত থেকে ভেরিফাইড রক্তদাতা খুঁজুন অথবা নিজে রক্তদাতা হিসেবে নিবন্ধন করুন।{% else %}Find verified blood donors across the country or register yourself as a donor for emergency medical needs.{% endif %}
+            <p class="text-muted lead fs-6">
+                {% if lang == 'bn' %}জরুরি মুহূর্তে রক্তের প্রয়োজন মেটাতে দেশের যেকোনো প্রান্ত থেকে ভেরিফাইড রক্তদাতা খুঁজুন অথবা নিজে রক্তদাতা হিসেবে নিবন্ধন করুন।{% else %}Find verified blood donors across the country or register yourself as a donor for emergency medical needs.{% endif %}
             </p>
+        </div>
+        <div class="col-md-4 text-md-end mt-3 mt-md-0">
+            <a href="#search-section" class="btn btn-danger btn-lg shadow-sm px-4 rounded-pill fw-bold">
+                <i class="fa-solid fa-search me-2"></i>{% if lang == 'bn' %}রক্তদাতা খুঁজুন{% else %}Find Donors{% endif %}
+            </a>
+        </div>
+    </div>
+
+    <!-- Video/Audio Support Section (সাউন্ড ও ভিডিও প্লেয়ার ঠিক করার জন্য) -->
+    <div class="card shadow-sm border-0 mb-5 bg-white rounded-4 overflow-hidden">
+        <div class="row g-0 align-items-center">
+            <div class="col-lg-6 p-4">
+                <h4 class="fw-bold text-dark mb-3">
+                    <i class="fa-solid fa-circle-play text-danger me-2"></i>
+                    {% if lang == 'bn' %}রক্তদানের গুরুত্ব ও নির্দেশিকা{% else %}Importance & Guidelines of Blood Donation{% endif %}
+                </h4>
+                <p class="text-muted">
+                    {% if lang == 'bn' %}নিয়মিত রক্তদান শরীরের জন্য অত্যন্ত উপকারী এবং এটি অন্যের জীবন বাঁচাতে সরাসরি ভূমিকা রাখে। ভিডিওটি দেখে রক্তদানের সঠিক নিয়ম জেনে নিন।{% else %}Regular blood donation is beneficial and saves lives. Watch this video to learn the proper guidelines.{% endif %}
+                </p>
+            </div>
+            <div class="col-lg-6 bg-dark">
+                <!-- ভিডিওতে সাউন্ড ও প্লে করার জন্য controls অ্যাট্রিবিউট নিশ্চিত করা হয়েছে -->
+                <div class="ratio ratio-169">
+                    <video controls class="w-100 h-100 object-fit-cover">
+                        <source src="{{ url_for('static', filename='images/slide3.mp4') }}" type="video/mp4">
+                        {% if lang == 'bn' %}আপনার ব্রাউজার ভিডিও ট্যাগ সমর্থন করে না।{% else %}Your browser does not support the video tag.{% endif %}
+                    </video>
+                </div>
+            </div>
         </div>
     </div>
 
     <!-- Search / Filter Card -->
-    <div class="card shadow-sm border-0 mb-5 bg-light">
-        <div class="card-body p-4">
-            <h5 class="fw-bold mb-3 text-dark"><i class="fa-solid fa-magnifying-glass me-2"></i>রক্তদাতা খুঁজুন (Search Donors)</h5>
+    <div id="search-section" class="card shadow border-0 mb-5 bg-white rounded-4">
+        <div class="card-body p-4 p-md-5">
+            <h4 class="fw-bold mb-4 text-dark"><i class="fa-solid fa-magnifying-glass text-primary me-2"></i>{% if lang == 'bn' %}রক্তদাতা অনুসন্ধান করুন{% else %}Search Donors{% endif %}</h4>
             <form class="row g-3">
                 <div class="col-md-4">
-                    <label class="form-label fw-bold">রক্তের গ্রুপ নির্বাচন করুন</label>
-                    <select class="form-select" required>
-                        <option selected disabled>গ্রুপ বেছে নিন</option>
+                    <label class="form-label fw-semibold text-secondary">{% if lang == 'bn' %}রক্তের গ্রুপ নির্বাচন করুন{% else %}Select Blood Group{% endif %}</label>
+                    <select class="form-select form-select-lg fs-6" required>
+                        <option selected disabled>{% if lang == 'bn' %}গ্রুপ বেছে নিন{% else %}Choose group{% endif %}</option>
                         <option>A+</option>
                         <option>A-</option>
                         <option>B+</option>
@@ -34,12 +63,12 @@
                     </select>
                 </div>
                 <div class="col-md-4">
-                    <label class="form-label fw-bold">জেলা / এলাকা</label>
-                    <input type="text" class="form-control" placeholder="যেমন: ঢাকা, সিলেট, সাভার">
+                    <label class="form-label fw-semibold text-secondary">{% if lang == 'bn' %}জেলা / এলাকা{% else %}District / Area{% endif %}</label>
+                    <input type="text" class="form-control form-control-lg fs-6" placeholder="যেমন: ঢাকা, সিলেট, সাভার">
                 </div>
                 <div class="col-md-4 d-flex align-items-end">
-                    <button type="submit" class="btn btn-danger w-100 fw-bold shadow-sm py-2">
-                        <i class="fa-solid fa-search me-2"></i>রক্তদাতা অনুসন্ধান করুন
+                    <button type="submit" class="btn btn-danger btn-lg w-100 fw-bold shadow-sm">
+                        <i class="fa-solid fa-search me-2"></i>{% if lang == 'bn' %}অনুসন্ধান করুন{% else %}Search Donors{% endif %}
                     </button>
                 </div>
             </form>
@@ -47,59 +76,69 @@
     </div>
 
     <!-- Donors List Grid -->
-    <h3 class="fw-bold mb-4 text-dark"><i class="fa-solid fa-users me-2 text-success"></i>উপলব্ধ রক্তদাতাগণ</h3>
+    <h3 class="fw-bold mb-4 text-dark"><i class="fa-solid fa-users me-2 text-success"></i>{% if lang == 'bn' %}উপলব্ধ রক্তদাতাগণ{% else %}Available Donors{% endif %}</h3>
     <div class="row g-4">
         <!-- Donor 1 -->
         <div class="col-md-4">
-            <div class="card shadow-sm border-0 h-100 hover-shadow transition">
+            <div class="card shadow-sm border-0 h-100 rounded-4 hover-shadow transition">
                 <div class="card-body p-4 d-flex flex-column justify-content-between">
                     <div>
                         <div class="d-flex justify-content-between align-items-center mb-3">
                             <h5 class="fw-bold text-dark mb-0">মো. তানভীর আহমেদ</h5>
-                            <span class="badge bg-danger fs-6 px-3 py-2">A+</span>
+                            <span class="badge bg-danger fs-6 px-3 py-2 rounded-pill shadow-sm">A+</span>
                         </div>
                         <p class="text-muted small mb-2"><i class="fa-solid fa-location-dot text-danger me-2"></i>জিন্দাবাজার, সিলেট সদর</p>
                         <p class="text-muted small mb-3"><i class="fa-regular fa-clock text-success me-2"></i>শেষ রক্তদান: ৩ মাস পূর্বে</p>
-                        <span class="badge bg-success bg-opacity-10 text-success fw-bold px-2 py-1 mb-3">স্ট্যাটাস: ডোনেশনের জন্য প্রস্তুত</span>
+                        <span class="badge bg-success bg-opacity-10 text-success fw-bold px-3 py-2 rounded-pill mb-3">স্ট্যাটাস: ডোনেশনের জন্য প্রস্তুত</span>
                     </div>
-                    <button class="btn btn-outline-danger w-100 fw-bold"><i class="fa-solid fa-phone me-2"></i>যোগাযোগ করুন</button>
+                    <button class="btn btn-outline-danger w-100 fw-bold rounded-pill py-2"><i class="fa-solid fa-phone me-2"></i>যোগাযোগ করুন</button>
                 </div>
             </div>
         </div>
         <!-- Donor 2 -->
         <div class="col-md-4">
-            <div class="card shadow-sm border-0 h-100 hover-shadow transition">
+            <div class="card shadow-sm border-0 h-100 rounded-4 hover-shadow transition">
                 <div class="card-body p-4 d-flex flex-column justify-content-between">
                     <div>
                         <div class="d-flex justify-content-between align-items-center mb-3">
                             <h5 class="fw-bold text-dark mb-0">ফাতিমা আক্তার</h5>
-                            <span class="badge bg-danger fs-6 px-3 py-2">O+</span>
+                            <span class="badge bg-danger fs-6 px-3 py-2 rounded-pill shadow-sm">O+</span>
                         </div>
                         <p class="text-muted small mb-2"><i class="fa-solid fa-location-dot text-danger me-2"></i>ধানমন্ডি, ঢাকা</p>
                         <p class="text-muted small mb-3"><i class="fa-regular fa-clock text-success me-2"></i>শেষ রক্তদান: ৫ মাস পূর্বে</p>
-                        <span class="badge bg-success bg-opacity-10 text-success fw-bold px-2 py-1 mb-3">স্ট্যাটাস: ডোনেশনের জন্য প্রস্তুত</span>
+                        <span class="badge bg-success bg-opacity-10 text-success fw-bold px-3 py-2 rounded-pill mb-3">স্ট্যাটাস: ডোনেশনের জন্য প্রস্তুত</span>
                     </div>
-                    <button class="btn btn-outline-danger w-100 fw-bold"><i class="fa-solid fa-phone me-2"></i>যোগাযোগ করুন</button>
+                    <button class="btn btn-outline-danger w-100 fw-bold rounded-pill py-2"><i class="fa-solid fa-phone me-2"></i>যোগাযোগ করুন</button>
                 </div>
             </div>
         </div>
         <!-- Donor 3 -->
         <div class="col-md-4">
-            <div class="card shadow-sm border-0 h-100 hover-shadow transition">
+            <div class="card shadow-sm border-0 h-100 rounded-4 hover-shadow transition">
                 <div class="card-body p-4 d-flex flex-column justify-content-between">
                     <div>
                         <div class="d-flex justify-content-between align-items-center mb-3">
                             <h5 class="fw-bold text-dark mb-0">সাব্বির রহমান</h5>
-                            <span class="badge bg-danger fs-6 px-3 py-2">B+</span>
+                            <span class="badge bg-danger fs-6 px-3 py-2 rounded-pill shadow-sm">B+</span>
                         </div>
                         <p class="text-muted small mb-2"><i class="fa-solid fa-location-dot text-danger me-2"></i>সুনামগঞ্জ সদর</p>
-                        <p class="text-muted small mb-3"><i class="fa-regular fa-clock text-success me-2"></i>শেষ রক্তদান: ৪ মাস পূর্বে</p>
-                        <span class="badge bg-success bg-opacity-10 text-success fw-bold px-2 py-1 mb-3">স্ট্যাটাস: ডোনেশনের জন্য প্রস্তুত</span>
+                        <p class="text-muted small mb-3"><i class="fa-regular fa-clock text-success me-2"></i>শেষরাষ্ট্রদান: ৪ মাস পূর্বে</p>
+                        <span class="badge bg-success bg-opacity-10 text-success fw-bold px-3 py-2 rounded-pill mb-3">স্ট্যাটাস: ডোনেশনের জন্য প্রস্তুত</span>
                     </div>
-                    <button class="btn btn-outline-danger w-100 fw-bold"><i class="fa-solid fa-phone me-2"></i>যোগাযোগ করুন</button>
+                    <button class="btn btn-outline-danger w-100 fw-bold rounded-pill py-2"><i class="fa-solid fa-phone me-2"></i>যোগাযোগ করুন</button>
                 </div>
             </div>
         </div>
     </div>
 </div>
+
+<style>
+    .hover-shadow {
+        transition: transform 0.3s ease, box-shadow 0.3s ease;
+    }
+    .hover-shadow:hover {
+        transform: translateY(-5px);
+        box-shadow: 0 .5rem 1rem rgba(0,0,0,.15)!important;
+    }
+</style>
 {% endblock %}

@@ -39,30 +39,23 @@
                             {% if lang == 'bn' %}শিক্ষা ও বৃত্তি{% else %}Scholarships{% endif %}
                         </a>
                     </li>
-                    <li class="nav-item">
-                        <a class="nav-link text-white fw-semibold" href="{{ url_for('services') }}">
+                    
+                    <!-- Dropdown for Citizen Services -->
+                    <li class="nav-item dropdown">
+                        <a class="nav-link dropdown-toggle text-white fw-semibold" href="#" id="servicesDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
                             {% if lang == 'bn' %}নাগরিক সেবা{% else %}Services{% endif %}
                         </a>
-                    </li>
-
-                    <!-- ড্রপডাউন মেনু: সব অতিরিক্ত পেজ এখানে যুক্ত করা হয়েছে -->
-                    <li class="nav-item dropdown">
-                        <a class="nav-link dropdown-toggle text-white fw-semibold" href="#" id="moreServicesDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
-                            {% if lang == 'bn' %}জরুরি ও অন্যান্য{% else %}More Services{% endif %}
-                        </a>
-                        <ul class="dropdown-menu shadow" aria-labelledby="moreServicesDropdown">
-                            <li><a class="dropdown-item" href="{{ url_for('relief_apply') }}">{% if lang == 'bn' %}ত্রাণ সহায়তা{% else %}Relief Aid{% endif %}</a></li>
+                        <ul class="dropdown-menu shadow" aria-labelledby="servicesDropdown">
+                            <li><a class="dropdown-item" href="{{ url_for('services') }}">{% if lang == 'bn' %}সকল সেবা{% else %}All Services{% endif %}</a></li>
+                            <li><hr class="dropdown-divider"></li>
                             <li><a class="dropdown-item" href="{{ url_for('blood_donors') }}">{% if lang == 'bn' %}রক্তদাতা তালিকা{% else %}Blood Donors{% endif %}</a></li>
                             <li><a class="dropdown-item" href="{{ url_for('disaster_alerts') }}">{% if lang == 'bn' %}দুর্যোগ সতর্কতা{% else %}Disaster Alerts{% endif %}</a></li>
                             <li><a class="dropdown-item" href="{{ url_for('emergency_contacts') }}">{% if lang == 'bn' %}জরুরি যোগাযোগ{% else %}Emergency Contacts{% endif %}</a></li>
-                            <li><a class="dropdown-item" href="{{ url_for('welfare_programs') }}">{% if lang == 'bn' %}কল্যাণ কর্মসূচি{% else %}Welfare Programs{% endif %}</a></li>
-                            <li><a class="dropdown-item" href="{{ url_for('volunteer') }}">{% if lang == 'bn' %}স্বেচ্ছাসেবক{% else %}Volunteer{% endif %}</a></li>
-                            
-                            {% if current_user.is_authenticated %}
-                                <li><hr class="dropdown-divider"></li>
-                                <li><a class="dropdown-item" href="{{ url_for('dashboard_citizen') }}">{% if lang == 'bn' %}নাগরিক ড্যাশবোর্ড{% else %}Citizen Dashboard{% endif %}</a></li>
-                                <li><a class="dropdown-item" href="{{ url_for('admin_dashboard') }}">{% if lang == 'bn' %}অ্যাডমিন ড্যাশবোর্ড{% else %}Admin Dashboard{% endif %}</a></li>
-                            {% endif %}
+                            <li><a class="dropdown-item" href="{{ url_for('relief_apply') }}">{% if lang == 'bn' %}ত্রাণ আবেদন{% else %}Relief Apply{% endif %}</a></li>
+                            <!-- এখানে service_apply এর সাথে service_name প্যারামিটার যুক্ত করা হয়েছে -->
+                            <li><a class="dropdown-item" href="{{ url_for('service_apply', service_name='general') }}">{% if lang == 'bn' %}সেবার আবেদন{% else %}Service Apply{% endif %}</a></li>
+                            <li><a class="dropdown-item" href="{{ url_for('volunteer') }}">{% if lang == 'bn' %}স্বেচ্ছাসেবক নিবন্ধন{% else %}Volunteer Registration{% endif %}</a></li>
+                            <li><a class="dropdown-item" href="{{ url_for('welfare_programs') }}">{% if lang == 'bn' %}কল্যাণমূলক কর্মসূচি{% else %}Welfare Programs{% endif %}</a></li>
                         </ul>
                     </li>
 

@@ -6,110 +6,208 @@
 
     <div class="row justify-content-center">
 
-        <div class="col-md-6 col-lg-5">
+        <div class="col-md-8 col-lg-7">
 
-            <div class="card shadow border-0 rounded-4">
+            <div class="card shadow-sm border-0 rounded-4">
 
                 <div class="card-body p-5">
+
+
+                    <!-- TITLE -->
 
                     <div class="text-center mb-4">
 
                         <i class="fa-solid fa-right-to-bracket text-primary"
-                           style="font-size:50px;"></i>
+                           style="font-size:50px;">
+                        </i>
 
                         <h2 class="fw-bold text-primary mt-3">
+
                             {% if lang == 'bn' %}
                                 লগইন করুন
                             {% else %}
-                                Login
+                                User Login
                             {% endif %}
+
                         </h2>
 
                         <p class="text-muted">
-                            Jonoseba Portal
+
+                            {% if lang == 'bn' %}
+                                আপনার ব্যবহারকারীর ধরন নির্বাচন করুন
+                            {% else %}
+                                Select your account type
+                            {% endif %}
+
                         </p>
 
                     </div>
 
 
+
+                    <!-- ROLE SELECTION -->
+
+                    <div class="row g-3 mb-4">
+
+
+                        <!-- ADMIN -->
+
+                        <div class="col-6 col-md-3">
+
+                            <button
+                                type="button"
+                                class="role-card"
+                                onclick="selectRole('admin', this)">
+
+                                <i class="fa-solid fa-user-shield"></i>
+
+                                <span>
+                                    Admin
+                                </span>
+
+                            </button>
+
+                        </div>
+
+
+
+                        <!-- STUDENT -->
+
+                        <div class="col-6 col-md-3">
+
+                            <button
+                                type="button"
+                                class="role-card active"
+                                onclick="selectRole('student', this)">
+
+                                <i class="fa-solid fa-user-graduate"></i>
+
+                                <span>
+                                    Student
+                                </span>
+
+                            </button>
+
+                        </div>
+
+
+
+                        <!-- VOLUNTEER -->
+
+                        <div class="col-6 col-md-3">
+
+                            <button
+                                type="button"
+                                class="role-card"
+                                onclick="selectRole('volunteer', this)">
+
+                                <i class="fa-solid fa-hand-holding-heart"></i>
+
+                                <span>
+                                    Volunteer
+                                </span>
+
+                            </button>
+
+                        </div>
+
+
+
+                        <!-- USER -->
+
+                        <div class="col-6 col-md-3">
+
+                            <button
+                                type="button"
+                                class="role-card"
+                                onclick="selectRole('user', this)">
+
+                                <i class="fa-solid fa-user"></i>
+
+                                <span>
+                                    Normal User
+                                </span>
+
+                            </button>
+
+                        </div>
+
+                    </div>
+
+
+
+                    <!-- LOGIN FORM -->
+
                     <form method="POST">
+
+
+                        <!-- IMPORTANT -->
+
+                        <input
+                            type="hidden"
+                            name="role"
+                            id="selectedRole"
+                            value="student"
+                        >
+
+
+                        <input
+                            type="hidden"
+                            name="next"
+                            value="{{ next_page }}"
+                        >
+
 
 
                         <!-- EMAIL -->
 
                         <div class="mb-3">
 
-                            <label class="form-label fw-bold">
-                                Email
+                            <label class="form-label fw-semibold">
+
+                                Email Address
+
                             </label>
 
                             <input
                                 type="email"
                                 name="email"
-                                class="form-control"
+                                class="form-control form-control-lg"
+                                placeholder="user@example.com"
                                 required
                             >
 
                         </div>
 
 
+
                         <!-- PASSWORD -->
 
-                        <div class="mb-3">
+                        <div class="mb-4">
 
-                            <label class="form-label fw-bold">
+                            <label class="form-label fw-semibold">
+
                                 Password
+
                             </label>
 
                             <input
                                 type="password"
                                 name="password"
-                                class="form-control"
+                                class="form-control form-control-lg"
+                                placeholder="Enter your password"
                                 required
                             >
 
                         </div>
 
 
-                        <!-- ROLE -->
 
-                        <div class="mb-4">
-
-                            <label class="form-label fw-bold">
-                                Login As
-                            </label>
-
-                            <select
-                                name="role"
-                                class="form-select"
-                                required
-                            >
-
-                                <option value="user">
-                                    Normal User
-                                </option>
-
-                                <option value="student">
-                                    Student
-                                </option>
-
-                                <option value="volunteer">
-                                    Volunteer
-                                </option>
-
-                                <option value="admin">
-                                    Admin
-                                </option>
-
-                            </select>
-
-                        </div>
-
+                        <!-- LOGIN BUTTON -->
 
                         <button
                             type="submit"
-                            class="btn btn-primary w-100 rounded-pill fw-bold py-2"
-                        >
+                            class="btn btn-primary btn-lg w-100 rounded-pill fw-bold">
 
                             <i class="fa-solid fa-right-to-bracket me-2"></i>
 
@@ -118,22 +216,6 @@
                         </button>
 
                     </form>
-
-
-                    <div class="text-center mt-4">
-
-                        <span class="text-muted">
-                            Don't have an account?
-                        </span>
-
-                        <a
-                            href="{{ url_for('register') }}"
-                            class="fw-bold text-primary"
-                        >
-                            Register
-                        </a>
-
-                    </div>
 
                 </div>
 
@@ -144,5 +226,114 @@
     </div>
 
 </div>
+
+
+
+<!-- ===================================================== -->
+<!-- STYLE -->
+<!-- ===================================================== -->
+
+<style>
+
+.role-card {
+
+    width: 100%;
+
+    min-height: 110px;
+
+    background: white;
+
+    border: 2px solid #dee2e6;
+
+    border-radius: 15px;
+
+    display: flex;
+
+    flex-direction: column;
+
+    align-items: center;
+
+    justify-content: center;
+
+    gap: 8px;
+
+    cursor: pointer;
+
+    transition: 0.2s;
+
+    color: #495057;
+
+    font-weight: 600;
+
+}
+
+
+.role-card i {
+
+    font-size: 28px;
+
+    color: #0d6efd;
+
+}
+
+
+.role-card:hover {
+
+    border-color: #0d6efd;
+
+    transform: translateY(-2px);
+
+}
+
+
+.role-card.active {
+
+    background: #0d6efd;
+
+    color: white;
+
+    border-color: #0d6efd;
+
+}
+
+
+.role-card.active i {
+
+    color: white;
+
+}
+
+</style>
+
+
+
+<!-- ===================================================== -->
+<!-- JAVASCRIPT -->
+<!-- ===================================================== -->
+
+<script>
+
+function selectRole(role, element) {
+
+    document.getElementById(
+        "selectedRole"
+    ).value = role;
+
+
+    document
+        .querySelectorAll(".role-card")
+        .forEach(function(card) {
+
+            card.classList.remove("active");
+
+        });
+
+
+    element.classList.add("active");
+
+}
+
+</script>
+
 
 {% endblock %}

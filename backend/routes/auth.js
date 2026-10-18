@@ -40,6 +40,7 @@ r.post('/login', async (req, res) => {
   if (!user || !(await bcrypt.compare(password || '', user.password))) {
     return res.status(401).json({ message: 'Invalid email or password' });
   }
+  if (user.blocked) return res.status(403).json({ message: 'Your account has been blocked by the admin' });
   res.json({ token: sign(user._id), user: pub(user) });
 });
 

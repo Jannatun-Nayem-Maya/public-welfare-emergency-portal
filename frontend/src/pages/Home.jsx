@@ -11,31 +11,40 @@ const slides = [
 ];
 
 const features = [
-  { to: '/health', icon: 'fa-hand-holding-droplet', tone: 'danger', bn: ['রক্তদান কেন্দ্র', 'জরুরি রক্তের অনুরোধ দিন বা রক্তদাতা খুঁজুন।', 'প্রবেশ করুন'], en: ['Blood Hub', 'Post urgent blood requests or find donors.', 'Enter Hub'] },
-  { to: '/scholarship', icon: 'fa-graduation-cap', tone: 'primary', bn: ['বৃত্তি ডিরেক্টরি', 'ফিল্টার, ডেডলাইন কাউন্টডাউন ও যোগ্যতা যাচাই।', 'বিস্তারিত দেখুন'], en: ['Scholarships', 'Filters, deadline countdowns and an eligibility finder.', 'View Details'] },
-  { to: '/disaster-alerts', icon: 'fa-triangle-exclamation', tone: 'warning', bn: ['দুর্যোগ সতর্কতা', 'বন্যা-ঘূর্ণিঝড়ের আপডেট ও নিকটস্থ আশ্রয়কেন্দ্র।', 'সতর্কতা দেখুন'], en: ['Disaster Alerts', 'Flood and cyclone updates with nearby shelters.', 'View Alerts'] },
-  { to: '/welfare-programs', icon: 'fa-people-group', tone: 'success', bn: ['কল্যাণ কর্মসূচি', 'ভাতার যোগ্যতা যাচাই করে সরাসরি আবেদন করুন।', 'যোগ্যতা দেখুন'], en: ['Welfare Programs', 'Check allowance eligibility and apply directly.', 'Check Eligibility'] },
-  { to: '/volunteer', icon: 'fa-hand-holding-heart', tone: 'accent', bn: ['স্বেচ্ছাসেবক', 'চলমান কার্যক্রমে যুক্ত হয়ে দেশের সেবা করুন।', 'যুক্ত হোন'], en: ['Volunteer', 'Join ongoing community programmes.', 'Join Now'] },
-  { to: '/services', icon: 'fa-building-columns', tone: 'primary', bn: ['ই-গভর্নেন্স সেবা', 'এনআইডি, ই-পাসপোর্ট, জন্ম নিবন্ধন ও আরও অনেক সেবা।', 'সেবা দেখুন'], en: ['Citizen Services', 'NID, e-passport, birth registration and more.', 'Explore Services'] },
+  { to: '/health', img: 'slide6.jpg', bn: ['রক্তদান কেন্দ্র', 'জরুরি রক্তের অনুরোধ দিন বা রক্তদাতা খুঁজুন।', 'প্রবেশ করুন'], en: ['Blood Hub', 'Post urgent blood requests or find donors.', 'Enter Hub'] },
+  { to: '/scholarship', img: 'slide7.jpg', bn: ['বৃত্তি ডিরেক্টরি', 'ফিল্টার, ডেডলাইন কাউন্টডাউন ও যোগ্যতা যাচাই।', 'বিস্তারিত দেখুন'], en: ['Scholarships', 'Filters, deadline countdowns and an eligibility finder.', 'View Details'] },
+  { to: '/disaster-alerts', img: 'slide8.jpg', bn: ['দুর্যোগ সতর্কতা', 'বন্যা-ঘূর্ণিঝড়ের আপডেট ও নিকটস্থ আশ্রয়কেন্দ্র।', 'সতর্কতা দেখুন'], en: ['Disaster Alerts', 'Flood and cyclone updates with nearby shelters.', 'View Alerts'] },
+  { to: '/welfare-programs', img: 'Palestine.jpg', bn: ['কল্যাণ কর্মসূচি', 'ভাতার যোগ্যতা যাচাই করে সরাসরি আবেদন করুন।', 'যোগ্যতা দেখুন'], en: ['Welfare Programs', 'Check allowance eligibility and apply directly.', 'Check Eligibility'] },
+  { to: '/volunteer', img: 'July_Movement.jpg', bn: ['স্বেচ্ছাসেবক', 'চলমান কার্যক্রমে যুক্ত হয়ে দেশের সেবা করুন।', 'যুক্ত হোন'], en: ['Volunteer', 'Join ongoing community programmes.', 'Join Now'] },
+  { to: '/services', img: 'osman-hadi.jpg', bn: ['ই-গভর্নেন্স সেবা', 'এনআইডি, ই-পাসপোর্ট, জন্ম নিবন্ধন ও আরও অনেক সেবা।', 'সেবা দেখুন'], en: ['Citizen Services', 'NID, e-passport, birth registration and more.', 'Explore Services'] },
 ];
+
+const SLIDE_SECONDS = 2.5; // slide koto second por bodlabe (kom korle aro fast)
 
 export default function Home() {
   const { t, lang } = useLang();
   const [i, setI] = useState(0);
-  const [paused, setPaused] = useState(false);
 
+  // Shob chobi ager theke load kore rakhe, jate slide change e deri na hoy
   useEffect(() => {
-    if (paused) return;
-    const id = setInterval(() => setI((x) => (x + 1) % slides.length), 4500);
+    [...slides, ...features].forEach((x) => {
+      const im = new Image();
+      im.src = `/images/${x.img}`;
+    });
+  }, []);
+
+  // Auto slide (mouse thakleo cholbe)
+  useEffect(() => {
+    const id = setInterval(() => setI((x) => (x + 1) % slides.length), SLIDE_SECONDS * 1000);
     return () => clearInterval(id);
-  }, [paused]);
+  }, []);
 
   const s = slides[i];
   const [title, sub] = lang === 'bn' ? s.bn : s.en;
 
   return (
     <div className="container section">
-      <div className="hero" onMouseEnter={() => setPaused(true)} onMouseLeave={() => setPaused(false)}>
+      <div className="hero">
         {slides.map((x, idx) => (
           <div
             key={x.img}
@@ -68,11 +77,14 @@ export default function Home() {
         {features.map((f) => {
           const [h, p, b] = lang === 'bn' ? f.bn : f.en;
           return (
-            <div className="card feature" key={f.to}>
-              <div className={`icon-circle tone-${f.tone}`}><i className={`fa-solid ${f.icon}`} /></div>
+            <div
+              className="card feature feature-bg"
+              key={f.to}
+              style={{ backgroundImage: `linear-gradient(to bottom, rgba(0,0,0,0) 0%, rgba(0,0,0,.25) 40%, rgba(0,0,0,.88) 100%), url(/images/${f.img})` }}
+            >
               <h3>{h}</h3>
-              <p className="muted">{p}</p>
-              <Link to={f.to} className="btn btn-outline btn-sm">{b}</Link>
+              <p>{p}</p>
+              <Link to={f.to} className="btn btn-light btn-sm">{b}</Link>
             </div>
           );
         })}

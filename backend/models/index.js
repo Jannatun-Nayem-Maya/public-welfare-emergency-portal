@@ -15,6 +15,7 @@ export const User = model(
       nid: String,
       district: String,
       role: { type: String, enum: ['user', 'student', 'volunteer', 'admin'], default: 'user' },
+      blocked: { type: Boolean, default: false },
       savedScholarships: [ref('Scholarship')],
     },
     opts

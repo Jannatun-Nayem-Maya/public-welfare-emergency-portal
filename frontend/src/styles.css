@@ -120,7 +120,7 @@ main { flex: 1; }
 
 /* ---------- Hero ---------- */
 .hero { position: relative; height: 400px; border-radius: 20px; overflow: hidden; box-shadow: var(--shadow-md); }
-.hero-slide { position: absolute; inset: 0; background-size: cover; background-position: center; opacity: 0; transition: opacity .8s ease; }
+.hero-slide { position: absolute; inset: 0; background-size: cover; background-position: center; opacity: 0; transition: opacity .4s ease; }
 .hero-slide.active { opacity: 1; }
 .hero-caption { position: absolute; left: 30px; bottom: 44px; max-width: 560px; color: #fff; background: rgba(13,71,56,.8); backdrop-filter: blur(8px); border: 1px solid rgba(255,255,255,.15); border-radius: 14px; padding: 20px 26px; }
 .hero-caption h2 { font-size: 1.6rem; }
@@ -307,3 +307,17 @@ input[type='checkbox'] { width: auto; accent-color: var(--primary); }
   .hero-caption h2 { font-size: 1.25rem; }
   .req { flex-wrap: wrap; } .req-side { flex-direction: row; align-items: center; }
 }
+/* ---------- Home page cards with background images ---------- */
+.feature-bg {
+  background-size: cover;
+  background-position: center;
+  color: #fff;
+  min-height: 340px;
+  justify-content: flex-end;   /* lekha niche e thakbe */
+  padding-bottom: 26px;
+  border: 0;
+}
+.feature-bg h3 { color: #fff; font-size: 1.35rem; text-shadow: 0 2px 10px rgba(0, 0, 0, .9); }
+.feature-bg p { color: #fff; text-shadow: 0 1px 8px rgba(0, 0, 0, .9); }
+.feature-bg .btn { margin-top: 14px; }   /* eta na thakle lekha upore chole jay */
+.feature-bg:hover { transform: translateY(-6px) scale(1.01); }
